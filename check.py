@@ -59,11 +59,14 @@ LIBRARIES = [
 		'location' : 'gfx/graphite',
 		'repo_url': "https://github.com/silnrsi/graphite/",
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/graphite2/README.mozilla",
-		'current_version_re': "This directory contains the Graphite2 library release ([0-9\.]+) from"
+		'current_version_re': "This directory contains the Graphite2 library release ([0-9\.]+) from",
+		'ignore' : '1.3.8' #
 	}
 ]
 
 if __name__ == "__main__":
+	return_code = OK
+
 	for l in LIBRARIES:
 		config = l
 		config['verbose'] = True
@@ -74,7 +77,14 @@ if __name__ == "__main__":
 		try:
 			current_version = get_mozilla_version(config)
 			latest_version = get_latest_version(config)
-			check_version(config, current_version, latest_version)
+			if latest_version == l['ignore']:
+				#We have an open bug for this already
+				if config['verbose']:
+					print"\tIgnoring outdated version, known bug"
+				continue
+			elif OK != check_version(config, current_version, latest_version):
+				return_code = UPDATE
 		except Exception as e:
 			print "\tCaught an exception:"
 			print traceback.format_exc()
+	sys.exit(return_code)
