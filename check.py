@@ -15,14 +15,14 @@ UPDATE = 1
 
 def get_mozilla_version(config):
 	t = requests.get(config['current_version_file'])
-	m = re.match(config['current_version_re'], t.text)
+	m = re.search(config['current_version_re'], t.text)
 	if m:
 		current_version = m.groups(0)[0]
 		if config['verbose']:
 			print "\tFound mozilla version", current_version
 		return current_version 
 	else:
-		raise Exception("Could not match the regular expression (" + str(config['current_version_re']) + ") in the text\n\t" + str(t.text))
+		raise Exception("Could not match the regular expression '" + str(config['current_version_re']) + "' in the text\n\n" + str(t.text))
 
 
 def get_latest_version(config):
@@ -61,6 +61,13 @@ def check_version(config, current_version, latest_version):
 
 LIBRARIES = [
 	{
+		'title' : 'Harfbuzz',
+		'location' : 'gfx/harfbuzz/',
+		'repo_url' : 'https://github.com/behdad/harfbuzz/',
+		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
+		'current_version_re': "Current version:\s*([0-9\.]+)",
+	},
+	{
 		'title' : 'Graphite2',
 		'location' : 'gfx/graphite',
 		'repo_url': "https://github.com/silnrsi/graphite/",
@@ -73,7 +80,7 @@ LIBRARIES = [
 		'repo_url' : 'https://github.com/hunspell/hunspell/',
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
 		'current_version_re': "Hunspell Version:\s*v?([0-9\.]+)",
-	}
+	},
 ]
 
 if __name__ == "__main__":
@@ -97,6 +104,7 @@ if __name__ == "__main__":
 			elif OK != check_version(config, current_version, latest_version):
 				return_code = UPDATE
 		except Exception as e:
+			return_code = ERROR
 			print "\tCaught an exception:"
 			print traceback.format_exc()
 	sys.exit(return_code)
