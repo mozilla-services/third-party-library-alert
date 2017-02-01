@@ -31,7 +31,13 @@ def get_latest_version(config):
 	if len(doc['entries']) < 1:
 		raise Exception("No entries were found at the atom url")
 
-	latest_version = doc['entries'][0]['link'].replace(config['repo_url'] + "releases/tag/", "")
+	latest_version = doc['entries'][0]['link']
+
+	#Clean up
+	latest_version = latest_version.replace(config['repo_url'] + "releases/tag/", "")
+	if latest_version[0] == 'v':
+		latest_version = latest_version[1:]
+
 	if config['verbose']:
 		print "\tFound version", latest_version
 
@@ -60,7 +66,13 @@ LIBRARIES = [
 		'repo_url': "https://github.com/silnrsi/graphite/",
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/graphite2/README.mozilla",
 		'current_version_re': "This directory contains the Graphite2 library release ([0-9\.]+) from",
-		'ignore' : '1.3.8' #
+	},
+	{
+		'title' : 'Hunspell',
+		'location' : 'extensions/spellcheck/hunspell/',
+		'repo_url' : 'https://github.com/hunspell/hunspell/',
+		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
+		'current_version_re': "Hunspell Version:\s*v?([0-9\.]+)",
 	}
 ]
 
@@ -77,7 +89,7 @@ if __name__ == "__main__":
 		try:
 			current_version = get_mozilla_version(config)
 			latest_version = get_latest_version(config)
-			if latest_version == l['ignore']:
+			if 'ignore' in l and latest_version == l['ignore']:
 				#We have an open bug for this already
 				if config['verbose']:
 					print"\tIgnoring outdated version, known bug"
