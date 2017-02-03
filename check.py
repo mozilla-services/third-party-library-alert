@@ -54,8 +54,9 @@ def check_version(config, current_version, latest_version):
 			print "\tUp to date"
 		return OK
 	else:
-		if config['verbose']:
-			print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
+		if not config['verbose']:
+			print "Examining", config['title'], "(" + config['location'] + ")" 
+		print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
 		return UPDATE
 
 
@@ -66,6 +67,7 @@ LIBRARIES = [
 		'repo_url' : 'https://github.com/behdad/harfbuzz/',
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
 		'current_version_re': "Current version:\s*([0-9\.]+)",
+		'ignore' : '1.4.2' #1336500
 	},
 	{
 		'title' : 'Graphite2',
@@ -88,7 +90,7 @@ if __name__ == "__main__":
 
 	for l in LIBRARIES:
 		config = l
-		config['verbose'] = True
+		config['verbose'] = False
 
 		if config['verbose']:
 			print "Examining", config['title'], "(" + config['location'] + ")"
