@@ -24,8 +24,9 @@ def get_mozilla_version(config):
 	else:
 		raise Exception("Could not match the regular expression '" + str(config['current_version_re']) + "' in the text\n\n" + str(t.text))
 
+################################################################################
 
-def get_latest_version(config):
+def _latest_version_release_version(config):
 	doc = feedparser.parse(config['repo_url'] + "releases.atom")
 
 	if len(doc['entries']) < 1:
@@ -38,10 +39,27 @@ def get_latest_version(config):
 	if latest_version[0] == 'v':
 		latest_version = latest_version[1:]
 
+	return latest_version
+
+def _latest_version_git_commit(config):
+	return latest_version
+
+################################################################################
+
+def get_latest_version(config):
+	if config['compare_type'] == 'release_version':
+		latest_version = _latest_version_release_version(config)
+	elif config['compare_type'] == 'git_commit':
+		latest_version = _latest_version_git_commit(config)
+	else:
+		raise Exception("Received an unknown comparison type: " + str(config['compare_type']))
+
 	if config['verbose']:
 		print "\tFound version", latest_version
 
 	return latest_version
+
+################################################################################
 
 def check_version(config, current_version, latest_version):
 	current_version = StrictVersion(current_version)
@@ -60,11 +78,14 @@ def check_version(config, current_version, latest_version):
 		return UPDATE
 
 
+################################################################################
+
 LIBRARIES = [
 	{
 		'title' : 'Harfbuzz',
 		'location' : 'gfx/harfbuzz/',
 		'repo_url' : 'https://github.com/behdad/harfbuzz/',
+		'compare_type' : 'release_version',
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
 		'current_version_re': "Current version:\s*([0-9\.]+)",
 		'ignore' : '1.4.2' #1336500
@@ -72,6 +93,7 @@ LIBRARIES = [
 	{
 		'title' : 'Graphite2',
 		'location' : 'gfx/graphite',
+		'compare_type' : 'release_version',
 		'repo_url': "https://github.com/silnrsi/graphite/",
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/graphite2/README.mozilla",
 		'current_version_re': "This directory contains the Graphite2 library release ([0-9\.]+) from",
@@ -79,11 +101,30 @@ LIBRARIES = [
 	{
 		'title' : 'Hunspell',
 		'location' : 'extensions/spellcheck/hunspell/',
+		'compare_type' : 'release_version',
 		'repo_url' : 'https://github.com/hunspell/hunspell/',
 		'current_version_file': "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
 		'current_version_re': "Hunspell Version:\s*v?([0-9\.]+)",
 	},
+	{
+		'title' : 'Codemirror',
+		'location' : 'devtools/client/sourceeditor/codemirror/',
+		'compare_type' : 'release_version',
+		'repo_url' : 'https://github.com/codemirror/CodeMirror/',
+		'current_version_file': "https://dxr.mozilla.org/mozilla-central/source/devtools/client/sourceeditor/codemirror/README",
+		'current_version_re': "Currently used version is ([0-9\.]+)\. To upgrade",
+	},
+	#{
+	#	'title' : 'OTS',
+	#	'location' : 'gfx/ots/',
+	#	'compare_type' : 'git_commit',
+	#	'repo_url' : 'https://github.com/khaledhosny/ots/',
+	#	'current_version_file' : 'https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/ots/README.mozilla',
+	#	'current_version_re' : 'Current revision:\s*([0-9a-f]+)',
+	#}
 ]
+
+################################################################################
 
 if __name__ == "__main__":
 	return_code = OK
