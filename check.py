@@ -90,6 +90,9 @@ def get_latest_version(config):
 	else:
 		raise Exception("Received an unknown latest_version_fetch_type: " + str(config['latest_version_fetch_type']))
 
+	if 'latest_version_post_alter' in config:
+		latest_version = config['latest_version_post_alter'](latest_version)
+
 	if config['verbose']:
 		print "\tFound version", latest_version
 
@@ -147,11 +150,12 @@ LIBRARIES = [
 		'title' : 'skia',
 		'filing_info' : 'Core:Graphics blocks:1210886',
 		'location' : 'gfx/skia',
-		'ignore' : '58', #1338658
+		'ignore' : '57', #1338658
 
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h',
 		'latest_version_re' : '<span class="pln"> SK_MILESTONE <\/span><span class="lit">([0-9]+)<\/span>',
+		'latest_version_post_alter' : lambda x : str(int(x)-1),
 
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/skia/skia/include/core/SkMilestone.h",
