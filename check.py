@@ -66,9 +66,11 @@ def _latest_version_github_rss(config):
 
 	return latest_version
 
-def _latest_version_multiline_html_re(config):
+def _latest_version_html_re(config):
+	flags = 0 if config['latest_version_fetch_type'] == 'singleline_html_re' else re.MULTILINE
+
 	t = requests.get(config['latest_version_fetch_location'])
-	m = re.search(config['latest_version_re'], t.text, re.MULTILINE)
+	m = re.search(config['latest_version_re'], t.text, flags)
 	if m:
 		latest_version = m.groups(0)[0]
 		return latest_version 
@@ -79,8 +81,9 @@ def _latest_version_multiline_html_re(config):
 def get_latest_version(config):
 	if config['latest_version_fetch_type'] == 'github_rss':
 		latest_version = _latest_version_github_rss(config)
-	elif config['latest_version_fetch_type'] == 'multiline_html_re':
-		latest_version = _latest_version_multiline_html_re(config)
+	elif config['latest_version_fetch_type'] == 'multiline_html_re' or\
+		 config['latest_version_fetch_type'] == 'singleline_html_re':
+		latest_version = _latest_version_html_re(config)
 	else:
 		raise Exception("Received an unknown latest_version_fetch_type: " + str(config['latest_version_fetch_type']))
 
@@ -92,6 +95,10 @@ def get_latest_version(config):
 ################################################################################
 
 def check_version(config, current_version, latest_version):
+	if '.' not in current_version:
+		current_version += '.0'
+	if '.' not in latest_version:
+		latest_version += '.0'
 	current_version = StrictVersion(current_version)
 	latest_version = StrictVersion(latest_version)
 
@@ -121,6 +128,30 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/old-configure.in",
 		'current_version_re': "SQLITE_VERSION=([0-9\.]+)",
+	},
+	{
+		'title' : 'pixman',
+		'location' : 'gfx/cairo',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'https://www.cairographics.org/releases/',
+		'latest_version_re' : "LATEST-pixman-([0-9.]+)",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/cairo/README",
+		'current_version_re': "pixman \(([0-9\.]+)\)",
+	},
+	{
+		'title' : 'skia',
+		'location' : 'gfx/skia',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h',
+		'latest_version_re' : '<span class="pln"> SK_MILESTONE <\/span><span class="lit">([0-9]+)<\/span>',
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/skia/skia/include/core/SkMilestone.h",
+		'current_version_re': "SK_MILESTONE ([0-9]+)",
 	},
 	{
 		'title' : 'Harfbuzz',
@@ -178,6 +209,17 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/extensions/pdfjs/README.mozilla",
 		'current_version_re': "Current extension version is: ([0-9\.]+)",
+	},
+	{
+		'title' : 'ternjs',
+		'location' : 'devtools/client/sourceeditor/tern',
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/ternjs/tern',
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/tern/README",
+		'current_version_re': "Currently used version is ([0-9\.]+)\.",
 	},
 	#{
 	#	'title' : 'OTS',
