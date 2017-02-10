@@ -24,6 +24,9 @@ def validate_config(config):
 	if not config['current_version_fetch_location'].startswith('https://hg.mozilla.org/mozilla-central/raw-file/tip/'):
 		raise Exception("current_version_fetch_location (" + config['current_version_fetch_location'] + ") does not appear to be a hg.mozilla link.")
 
+	if 'filing_info' not in config:
+		config['filing_info'] = ''
+
 	return config
 
 ################################################################################
@@ -109,8 +112,6 @@ def check_version(config, current_version, latest_version):
 			print "\tUp to date"
 		return OK
 	else:
-		if not config['verbose']:
-			print "Examining", config['title'], "(" + config['location'] + ")" 
 		return UPDATE
 
 
@@ -132,6 +133,7 @@ LIBRARIES = [
 	{
 		'title' : 'pixman',
 		'location' : 'gfx/cairo',
+		'ignore' : '0.34.0', #870258
 
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://www.cairographics.org/releases/',
@@ -143,7 +145,9 @@ LIBRARIES = [
 	},
 	{
 		'title' : 'skia',
+		'filing_info' : 'Core:Graphics blocks:1210886',
 		'location' : 'gfx/skia',
+		'ignore' : '58', #1338658
 
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h',
@@ -187,9 +191,22 @@ LIBRARIES = [
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
 		'current_version_re': "Hunspell Version:\s*v?([0-9\.]+)",
 	},
+	#{
+	#	'title' : 'Hyphen',
+	#	'location' : 'intl/hyphenation/',
+
+	#	'latest_version_fetch_type' : '',
+	#	'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/files/Hyphen/',
+
+	#	'current_version_fetch_type' : 'hg.moz_re',
+	#	'current_version_fetch_location': "",
+	#	'current_version_re': "",
+	#},
 	{
 		'title' : 'Codemirror',
+		'filing_info' : 'Firefox: Developer Tools: Source Editor',
 		'location' : 'devtools/client/sourceeditor/codemirror/',
+		'ignore' : '5.23.0', #1338659
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/codemirror/CodeMirror/',
@@ -213,6 +230,7 @@ LIBRARIES = [
 	{
 		'title' : 'ternjs',
 		'location' : 'devtools/client/sourceeditor/tern',
+		'ignore' : '0.20.0', #1338660
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/ternjs/tern',
@@ -231,6 +249,22 @@ LIBRARIES = [
 ]
 
 ################################################################################
+
+bug_message = """
+=========================
+Update %(title)s to %(latest_version)s
+---------
+%(filing_info)s Blocks: 1325608
+---------
+This is a (semi-)automated bug making you aware that there is an available upgarde for an embedded third-party library.
+
+%(title)s is currently at version %(current_version)s in mozilla-central, and the latest version of the library released is %(latest_version)s. 
+
+I fetched the latest version of the library from %(latest_version_fetch_location)s.
+
+You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
+=========================
+"""
 
 if __name__ == "__main__":
 	verbose = False
@@ -265,11 +299,17 @@ if __name__ == "__main__":
 							print"\tIgnoring ahead version, config allows it"
 					else:
 						return_code = AHEAD # might be ovewritten by UPDATE or vice versa but doesn't matter
-						print "\tCurrent version (" + str(current_version) + ") is AHEAD of latest (" + str(latest_version) + ")?!?!"
+						if config['verbose']:
+							print "\tCurrent version (" + str(current_version) + ") is AHEAD of latest (" + str(latest_version) + ")?!?!"
 
 
 				else:
-					print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
+					if config['verbose']:
+						print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
+
+					config['current_version'] = current_version
+					config['latest_version'] = latest_version
+					print bug_message % config
 					return_code = UPDATE
 
 		except Exception as e:
