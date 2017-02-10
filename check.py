@@ -11,6 +11,7 @@ from distutils.version import StrictVersion
 ERROR = -1
 OK = 0
 UPDATE = 1
+AHEAD = 2
 
 
 def get_mozilla_version(config):
@@ -47,6 +48,9 @@ def _latest_version_git_commit(config):
 ################################################################################
 
 def get_latest_version(config):
+	if not config['repo_url'].endswith('/'):
+		config['repo_url'] += '/'
+
 	if config['compare_type'] == 'release_version':
 		latest_version = _latest_version_release_version(config)
 	elif config['compare_type'] == 'git_commit':
@@ -66,7 +70,7 @@ def check_version(config, current_version, latest_version):
 	latest_version = StrictVersion(latest_version)
 
 	if latest_version < current_version:
-		raise Exception("Latest version is older than current version")
+		return AHEAD
 	elif latest_version == current_version:
 		if config['verbose']:
 			print "\tUp to date"
@@ -74,7 +78,6 @@ def check_version(config, current_version, latest_version):
 	else:
 		if not config['verbose']:
 			print "Examining", config['title'], "(" + config['location'] + ")" 
-		print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
 		return UPDATE
 
 
@@ -114,6 +117,15 @@ LIBRARIES = [
 		'current_version_file': "https://dxr.mozilla.org/mozilla-central/source/devtools/client/sourceeditor/codemirror/README",
 		'current_version_re': "Currently used version is ([0-9\.]+)\. To upgrade",
 	},
+	{
+		'title' : 'pdfjs',
+		'location' : 'browser/extensions/pdfjs',
+		'compare_type' : 'release_version',
+		'allows_ahead' : True,
+		'repo_url' : 'https://github.com/mozilla/pdf.js',
+		'current_version_file': "https://dxr.mozilla.org/mozilla-central/source/browser/extensions/pdfjs/README.mozilla",
+		'current_version_re': "Current extension version is: ([0-9\.]+)",
+	},
 	#{
 	#	'title' : 'OTS',
 	#	'location' : 'gfx/ots/',
@@ -127,11 +139,15 @@ LIBRARIES = [
 ################################################################################
 
 if __name__ == "__main__":
+	verbose = False
+	if '-v' in sys.argv:
+		verbose = True
+
 	return_code = OK
 
 	for l in LIBRARIES:
 		config = l
-		config['verbose'] = False
+		config['verbose'] = verbose
 
 		if config['verbose']:
 			print "Examining", config['title'], "(" + config['location'] + ")"
@@ -139,13 +155,27 @@ if __name__ == "__main__":
 		try:
 			current_version = get_mozilla_version(config)
 			latest_version = get_latest_version(config)
-			if 'ignore' in l and latest_version == l['ignore']:
-				#We have an open bug for this already
-				if config['verbose']:
-					print"\tIgnoring outdated version, known bug"
-				continue
-			elif OK != check_version(config, current_version, latest_version):
-				return_code = UPDATE
+			status = check_version(config, current_version, latest_version)
+
+			if status != OK:
+				if 'ignore' in l and latest_version == l['ignore']:
+					#We have an open bug for this already
+					if config['verbose']:
+						print"\tIgnoring outdated version, known bug"
+
+				elif status == AHEAD:
+					if config['allows_ahead']:
+						if config['verbose']:
+							print"\tIgnoring ahead version, config allows it"
+					else:
+						return_code = AHEAD # might be ovewritten by UPDATE or vice versa but doesn't matter
+						print "\tCurrent version (" + str(current_version) + ") is AHEAD of latest (" + str(latest_version) + ")?!?!"
+
+
+				else:
+					print "\tCurrent version (" + str(current_version) + ") is behind latest (" + str(latest_version) + ")"
+					return_code = UPDATE
+
 		except Exception as e:
 			return_code = ERROR
 			print "\tCaught an exception:"
