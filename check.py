@@ -9,8 +9,11 @@ import feedparser
 from distutils.version import StrictVersion
 
 # Sometimes we don't do certificate validation because we're naughty
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+try:
+	from requests.packages.urllib3.exceptions import InsecureRequestWarning
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+except:
+	pass
 
 
 ERROR = -1
