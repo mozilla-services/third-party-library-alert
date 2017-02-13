@@ -131,7 +131,9 @@ def check_version(config, current_version, latest_version):
 LIBRARIES = [
 	{
 		'title' : 'sqlite',
+		'filing_info' : 'Toolkit:Storage',
 		'location' : 'db/sqlite3',
+		'ignore' : '3.17.0', #1339110
 
 		'latest_version_fetch_type' : 'multiline_html_re',
 		'latest_version_fetch_location' : 'https://www.sqlite.org/chronology.html',
@@ -269,7 +271,7 @@ Update %(title)s to %(latest_version)s
 ---------
 %(filing_info)s Blocks: 1325608
 ---------
-This is a (semi-)automated bug making you aware that there is an available upgarde for an embedded third-party library.
+This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library.
 
 %(title)s is currently at version %(current_version)s in mozilla-central, and the latest version of the library released is %(latest_version)s. 
 
