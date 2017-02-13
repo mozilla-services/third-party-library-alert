@@ -8,6 +8,11 @@ import traceback
 import feedparser
 from distutils.version import StrictVersion
 
+# Sometimes we don't do certificate validation because we're naughty
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+
 ERROR = -1
 OK = 0
 UPDATE = 1
@@ -26,6 +31,9 @@ def validate_config(config):
 
 	if 'filing_info' not in config:
 		config['filing_info'] = ''
+
+	if 'latest_version_fetch_ssl_verify' not in config:
+		config['latest_version_fetch_ssl_verify'] = True
 
 	return config
 
@@ -72,7 +80,7 @@ def _latest_version_github_rss(config):
 def _latest_version_html_re(config):
 	flags = 0 if config['latest_version_fetch_type'] == 'singleline_html_re' else re.MULTILINE
 
-	t = requests.get(config['latest_version_fetch_location'])
+	t = requests.get(config['latest_version_fetch_location'], verify=config['latest_version_fetch_ssl_verify'])
 	m = re.search(config['latest_version_re'], t.text, flags)
 	if m:
 		latest_version = m.groups(0)[0]
@@ -140,6 +148,7 @@ LIBRARIES = [
 
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://www.cairographics.org/releases/',
+		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
 		'latest_version_re' : "LATEST-pixman-([0-9.]+)",
 
 		'current_version_fetch_type' : 'hg.moz_re',
