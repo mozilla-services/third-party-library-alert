@@ -169,12 +169,12 @@ def check_version(config, current_version, latest_version):
 ################################################################################
 
 #ryanvm:
-#libevent, libffi
+#libevent
 
 #libpng can be ignored since the maintainer updates it
 
 LIBRARIES = [
-		{
+	{
 		'title' : 'kissfft',
 		'location' : 'media/kiss_fft',
 		'filing_info' : 'Core:Audio/Video',
