@@ -204,6 +204,20 @@ LIBRARIES = [
 		'current_version_re': "FreeType ([0-9\.]+)",
 	},
 	{
+		'title' : 'libffi',
+		'filing_info' : 'CC:ryanvm Core:js-ctypes',
+		'location' : 'js/src/ctypes',
+		'ignore' : '3.2.1', #1339534
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'https://sourceware.org/libffi/',
+		'latest_version_re' : "<b>libffi-([0-9.]+)</b> was released",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
+		'current_version_re': "libffi-([0-9\.]+) was",
+	},
+	{
 		'title' : 'jemalloc',
 		'filing_info' : 'CC:ryanvm',
 		'location' : 'memory/jemalloc',
