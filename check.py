@@ -38,6 +38,9 @@ def validate_config(config):
 	if 'latest_version_fetch_ssl_verify' not in config:
 		config['latest_version_fetch_ssl_verify'] = True
 
+	if 'compare_type' not in config:
+		config['compare_type'] = 'version'
+
 	return config
 
 ################################################################################
@@ -129,8 +132,7 @@ def get_latest_version(config):
 	return latest_version
 
 ################################################################################
-
-def check_version(config, current_version, latest_version):
+def _compare_type_version(config, current_version, latest_version):
 	if '.' not in current_version:
 		current_version += '.0'
 	if '.' not in latest_version:
@@ -147,6 +149,22 @@ def check_version(config, current_version, latest_version):
 	else:
 		return UPDATE
 
+def _compare_type_equality(config, current_version, latest_version):
+	if latest_version != current_version:
+		return UPDATE
+	elif latest_version == current_version:
+		if config['verbose']:
+			print "\tUp to date"
+		return OK
+	else:
+		raise Exception("Uh....?")
+
+def check_version(config, current_version, latest_version):
+	if config['compare_type'] == 'version':
+		return _compare_type_version(config, current_version, latest_version)
+	elif config['compare_type'] == 'equality':
+		return _compare_type_equality(config, current_version, latest_version)
+
 
 ################################################################################
 
@@ -156,6 +174,21 @@ def check_version(config, current_version, latest_version):
 #libpng can be ignored since the maintainer updates it
 
 LIBRARIES = [
+		{
+		'title' : 'kissfft',
+		'location' : 'media/kiss_fft',
+		'filing_info' : 'Core:Audio/Video',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'http://hg.code.sf.net/p/kissfft/code',
+		'latest_version_re' : "<td class=\"description\"><a href=\"/p/kissfft/code/rev/([0-9a-f]+)\"",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/kiss_fft/README_MOZILLA",
+		'current_version_re': "([0-9a-f]{12})",
+
+		'compare_type' : 'equality'
+	},
 	{
 		'title' : 'freetype2',
 		'filing_info' : 'CC:ryanvm',
@@ -209,6 +242,20 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/cairo/README",
 		'current_version_re': "pixman \(([0-9\.]+)\)",
+	},
+	{
+		'title' : 'libav',
+		'location' : 'media/libav',
+		'filing_info' : 'Core:Audio/Video',
+		'ignore' : '12', #1339521
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'https://libav.org/download/',
+		'latest_version_re' : "<b>([0-9.]+)</b> was released on <i>",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libav/VERSION",
+		'current_version_re': "([0-9\.]+)",
 	},
 	{
 		'title' : 'zlib',
