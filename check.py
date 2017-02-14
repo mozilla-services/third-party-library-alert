@@ -211,6 +211,18 @@ LIBRARIES = [
 		'current_version_re': "pixman \(([0-9\.]+)\)",
 	},
 	{
+		'title' : 'zlib',
+		'location' : 'modules/zlib',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'http://zlib.net/ChangeLog.txt',
+		'latest_version_re' : "Changes in ([0-9.]+)",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/zlib/src/ChangeLog",
+		'current_version_re': "Changes in ([0-9.]+)",
+	},
+	{
 		'title' : 'skia',
 		'filing_info' : 'Core:Graphics blocks:1210886',
 		'location' : 'gfx/skia',
