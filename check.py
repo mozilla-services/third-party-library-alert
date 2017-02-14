@@ -6,7 +6,7 @@ import sys
 import requests
 import traceback
 import feedparser
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 # Sometimes we don't do certificate validation because we're naughty
 try:
@@ -80,6 +80,23 @@ def _latest_version_github_rss(config):
 
 	return latest_version
 
+def _latest_version_directory_crawl(config):
+	t = requests.get(config['latest_version_fetch_location'], verify=config['latest_version_fetch_ssl_verify'])
+	regex = '<a href="' + config['latest_version_file_prefix_re'] + '([0-9.]+)' + config['latest_version_file_suffix_re']
+	m = re.findall(regex, t.text)
+
+	if m:
+		max_ver = None
+		for i in m:
+			this_ver = LooseVersion(i)
+			if not max_ver:
+				max_ver = this_ver
+			elif this_ver > max_ver:
+				max_ver = this_ver
+		return str(max_ver)
+	else:
+		raise Exception("Could not match the regular expression '" + str(regex) + "' in the text\n\n" + str(t.text))	
+
 def _latest_version_html_re(config):
 	flags = 0 if config['latest_version_fetch_type'] == 'singleline_html_re' else re.MULTILINE
 
@@ -89,12 +106,14 @@ def _latest_version_html_re(config):
 		latest_version = m.groups(0)[0]
 		return latest_version 
 	else:
-		raise Exception("Could not match the regular expression '" + str(config['latest_version_re']) + "' in the text\n\n" + str(t.text))	
+		raise Exception("Could not match the regular expression '" + str(config['latest_version_re']) + "' in the text\n\n" + str(t.text))
 	return latest_version
 
 def get_latest_version(config):
 	if config['latest_version_fetch_type'] == 'github_rss':
 		latest_version = _latest_version_github_rss(config)
+	elif config['latest_version_fetch_type'] == 'find_in_directory':
+		latest_version = _latest_version_directory_crawl(config)
 	elif config['latest_version_fetch_type'] == 'multiline_html_re' or\
 		 config['latest_version_fetch_type'] == 'singleline_html_re':
 		latest_version = _latest_version_html_re(config)
@@ -116,8 +135,8 @@ def check_version(config, current_version, latest_version):
 		current_version += '.0'
 	if '.' not in latest_version:
 		latest_version += '.0'
-	current_version = StrictVersion(current_version)
-	latest_version = StrictVersion(latest_version)
+	current_version = LooseVersion(current_version)
+	latest_version = LooseVersion(latest_version)
 
 	if latest_version < current_version:
 		return AHEAD
@@ -137,6 +156,20 @@ def check_version(config, current_version, latest_version):
 #libpng can be ignored since the maintainer updates it
 
 LIBRARIES = [
+	{
+		'title' : 'freetype2',
+		'filing_info' : 'CC:ryanvm',
+		'location' : 'modules/freetype2',
+
+		'latest_version_fetch_type' : 'find_in_directory',
+		'latest_version_fetch_location' : 'http://download.savannah.gnu.org/releases/freetype/',
+		'latest_version_file_prefix_re' : 'freetype-',
+		'latest_version_file_suffix_re' : '\.tar\.bz2',
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/freetype2/README",
+		'current_version_re': "FreeType ([0-9\.]+)",
+	},
 	{
 		'title' : 'sqlite',
 		'filing_info' : 'Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug',
