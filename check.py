@@ -60,6 +60,9 @@ def get_mozilla_version(config):
 	else:
 		raise Exception("Received an unknown current_version_fetch_type: " + str(config['current_version_fetch_type']))
 
+	if 'current_version_post_alter' in config:
+		current_version = config['current_version_post_alter'](current_version)
+
 	if config['verbose']:
 		print "\tFound mozilla version", current_version
 
@@ -174,6 +177,19 @@ def check_version(config, current_version, latest_version):
 #libpng can be ignored since the maintainer updates it
 
 LIBRARIES = [
+	{
+		'title' : 'icu',
+		'location' : 'intl/icu',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'http://site.icu-project.org/download/',
+		'latest_version_re' : "<p><b><i>ICU ([0-9.]+) is now available.</i></b>",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/icu/SVN-INFO",
+		'current_version_re': "Relative URL: \^/tags/release-([0-9-]+)/icu4c",
+		'current_version_post_alter' : lambda x : x.replace("-", "."),
+	},
 	{
 		'title' : 'kissfft',
 		'location' : 'media/kiss_fft',
