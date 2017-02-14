@@ -132,7 +132,7 @@ def check_version(config, current_version, latest_version):
 ################################################################################
 
 #ryanvm:
-#libjpeg-turbo, jemalloc4, libevent, libffi, freetype2
+#jemalloc4, libevent, libffi, freetype2
 
 #libpng can be ignored since the maintainer updates it
 
@@ -266,6 +266,18 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/tern/README",
 		'current_version_re': "Currently used version is ([0-9\.]+)\.",
+	},
+		{
+		'title' : 'libjpeg-turbo',
+		'location' : 'media/libjpeg',
+		'filing_info' : 'CC:ryanvm',
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/libjpeg-turbo/libjpeg-turbo',
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libjpeg/MOZCHANGES",
+		'current_version_re': "Updated to v([0-9\.]+) release.",
 	},
 	#{
 	#	'title' : 'OTS',
