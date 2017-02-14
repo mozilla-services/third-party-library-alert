@@ -151,7 +151,7 @@ def check_version(config, current_version, latest_version):
 ################################################################################
 
 #ryanvm:
-#jemalloc4, libevent, libffi, freetype2
+#libevent, libffi
 
 #libpng can be ignored since the maintainer updates it
 
@@ -169,6 +169,18 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/freetype2/README",
 		'current_version_re': "FreeType ([0-9\.]+)",
+	},
+	{
+		'title' : 'jemalloc',
+		'filing_info' : 'CC:ryanvm',
+		'location' : 'memory/jemalloc',
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/jemalloc/jemalloc/',
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/memory/jemalloc/src/VERSION",
+		'current_version_re': "([0-9\.]+)-",
 	},
 	{
 		'title' : 'sqlite',
