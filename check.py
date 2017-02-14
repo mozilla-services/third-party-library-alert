@@ -191,6 +191,18 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'libvpx',
+		'location' : 'media/libvpx',
+
+		'latest_version_fetch_type' : 'singleline_html_re',
+		'latest_version_fetch_location' : 'https://chromium.googlesource.com/webm/libvpx/+refs',
+		'latest_version_re' : "Tags</h3><ul class=\"RefList-items\"><li class=\"RefList-item\"><a href=\"/webm/libvpx/\+/v([0-9.]+)\">",
+
+		'current_version_fetch_type' : 'hg.moz_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libvpx/README_MOZILLA",
+		'current_version_re': "The git commit ID used was v([0-9.]+)",
+	},
+	{
 		'title' : 'kissfft',
 		'location' : 'media/kiss_fft',
 		'filing_info' : 'Core:Audio/Video',
