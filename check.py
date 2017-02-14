@@ -131,10 +131,15 @@ def check_version(config, current_version, latest_version):
 
 ################################################################################
 
+#ryanvm:
+#libjpeg-turbo, jemalloc4, libevent, libffi, freetype2
+
+#libpng can be ignored since the maintainer updates it
+
 LIBRARIES = [
 	{
 		'title' : 'sqlite',
-		'filing_info' : 'Toolkit:Storage',
+		'filing_info' : 'Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug',
 		'location' : 'db/sqlite3',
 		'ignore' : '3.17.0', #1339110
 
@@ -178,6 +183,7 @@ LIBRARIES = [
 	{
 		'title' : 'Harfbuzz',
 		'location' : 'gfx/harfbuzz/',
+		'filing_info' : 'CC:ryanvm',
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/behdad/harfbuzz/',
@@ -190,6 +196,7 @@ LIBRARIES = [
 	{
 		'title' : 'Graphite2',
 		'location' : 'gfx/graphite',
+		'filing_info' : 'CC:ryanvm',
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location': "https://github.com/silnrsi/graphite/",
@@ -201,6 +208,7 @@ LIBRARIES = [
 	{
 		'title' : 'Hunspell',
 		'location' : 'extensions/spellcheck/hunspell/',
+		'filing_info' : 'CC:ryanvm',
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/hunspell/hunspell/',
@@ -212,6 +220,7 @@ LIBRARIES = [
 	#{
 	#	'title' : 'Hyphen',
 	#	'location' : 'intl/hyphenation/',
+	#	'filing_info' : 'CC:ryanvm',
 
 	#	'latest_version_fetch_type' : '',
 	#	'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/files/Hyphen/',
@@ -237,6 +246,7 @@ LIBRARIES = [
 		'title' : 'pdfjs',
 		'location' : 'browser/extensions/pdfjs',
 		'allows_ahead' : True,
+		'filing_info' : 'CC:ryanvm',
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/mozilla/pdf.js',
