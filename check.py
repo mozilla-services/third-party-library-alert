@@ -240,6 +240,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://sourceware.org/libffi/',
 		'latest_version_re' : "<b>libffi-([0-9.]+)</b> was released",
+		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
 
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
@@ -500,6 +501,6 @@ if __name__ == "__main__":
 
 		except Exception as e:
 			return_code = ERROR
-			print "\tCaught an exception:"
+			print "\tCaught an exception processing", config['title']
 			print traceback.format_exc()
 	sys.exit(return_code)
