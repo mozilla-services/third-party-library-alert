@@ -295,6 +295,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'singleline_html_re',
 		'latest_version_fetch_location' : 'https://libav.org/download/',
 		'latest_version_re' : "<b>([0-9.]+)</b> was released on <i>",
+		'latest_version_fetch_ssl_verify' : False, #Think it's a root cert issue? Or maybe an Intermediate issue.
 
 		'current_version_fetch_type' : 'hg.moz_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libav/VERSION",
