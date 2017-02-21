@@ -381,7 +381,7 @@ LIBRARIES = [
 		'title' : 'Codemirror',
 		'filing_info' : 'Firefox: Developer Tools: Source Editor',
 		'location' : 'devtools/client/sourceeditor/codemirror/',
-		'ignore' : '5.23.0', #1338659
+		'ignore' : '5.24.0', #1338659
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/codemirror/CodeMirror/',
@@ -406,7 +406,7 @@ LIBRARIES = [
 	{
 		'title' : 'ternjs',
 		'location' : 'devtools/client/sourceeditor/tern',
-		'ignore' : '0.20.0', #1338660
+		'ignore' : '0.21.0', #1338660
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/ternjs/tern',
