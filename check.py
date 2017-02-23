@@ -381,7 +381,7 @@ LIBRARIES = [
 		'title' : 'Codemirror',
 		'filing_info' : 'Firefox: Developer Tools: Source Editor',
 		'location' : 'devtools/client/sourceeditor/codemirror/',
-		'ignore' : '5.24.0', #1338659
+		'ignore' : '5.24.2', #1338659
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/codemirror/CodeMirror/',
