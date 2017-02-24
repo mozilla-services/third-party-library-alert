@@ -246,6 +246,18 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'SRTP',
+		'location' : 'netwerk/srtp',
+		'ignore' : '2.0.0', # 1230759
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/cisco/libsrtp',
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/srtp/src/VERSION",
+		'current_version_re': "([0-9\.]+)",
+	},
+	{
 		'title' : 'OTS',
 		'location' : 'gfx/ots',
 
