@@ -246,6 +246,17 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'OTS',
+		'location' : 'gfx/ots',
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/khaledhosny/ots/',
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/ots/README.mozilla",
+		'current_version_re': "Current revision: [0-9a-fA-F]+ \(([0-9\.]+)\)",
+	},
+	{
 		'title' : 'libvpx',
 		'location' : 'media/libvpx',
 
