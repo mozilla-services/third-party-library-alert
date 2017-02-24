@@ -198,16 +198,16 @@ def fetch_and_compare(config):
 			if config['latest_version'] - ignore_date < datetime.timedelta(days=config['compare_date_lag']):
 				should_ignore = True
 
-	config['status'] = status
-
 	if status != OK:
 		if should_ignore:
+			status = OK
 			#We have an open bug for this already
 			if config['verbose']:
 				print"\tIgnoring outdated version, known bug"
 
 		elif status == AHEAD:
 			if 'allows_ahead' in config and config['allows_ahead']:
+				status = OK
 				if config['verbose']:
 					print"\tIgnoring ahead version, config allows it"
 			else:
@@ -220,6 +220,8 @@ def fetch_and_compare(config):
 
 			print bug_message % config
 	
+	config['status'] = status
+
 	return config
 
 ################################################################################
