@@ -410,7 +410,7 @@ LIBRARIES = [
 	{
 		'title' : 'Harfbuzz',
 		'location' : 'gfx/harfbuzz/',
-		'filing_info' : 'CC:ryanvm',
+		'filing_info' : 'Core:Graphics:Text CC:ryanvm',
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/behdad/harfbuzz/',
@@ -418,7 +418,7 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
 		'current_version_re': "Current version:\s*([0-9\.]+)",
-		'ignore' : '1.4.2' #1336500
+		'ignore' : '1.4.3' #1342964
 	},
 	{
 		'title' : 'Graphite2',
