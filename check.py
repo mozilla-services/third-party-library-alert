@@ -246,6 +246,19 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'libbz2',
+		'location' : 'modules/libbz2',
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'http://bzip.org/index.html',
+		'latest_version_re' : "The current version is <b>([0-9.]+)</b>",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/libbz2/src/bzlib.h",
+		'current_version_re': "bzip2/libbzip2 version ([0-9.]+) of",
+	},
+	{
 		'title' : 'SRTP',
 		'location' : 'netwerk/srtp',
 		'ignore' : '2.0.0', # 1230759
