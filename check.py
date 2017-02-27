@@ -30,8 +30,9 @@ def validate_config(config):
 	   not config['latest_version_fetch_location'].endswith('/'):
 		config['latest_version_fetch_location'] += '/'
 
-	if not config['current_version_fetch_location'].startswith('https://hg.mozilla.org/mozilla-central/raw-file/tip/'):
-		raise Exception("current_version_fetch_location (" + config['current_version_fetch_location'] + ") does not appear to be a hg.mozilla link.")
+	if config['current_version_fetch_location'].startswith('https://hg.mozilla.org/') \
+		and not config['current_version_fetch_location'].startswith('https://hg.mozilla.org/mozilla-central/raw-file/tip/'):
+		raise Exception("current_version_fetch_location (" + config['current_version_fetch_location'] + ") does not appear to be a raw hg.mozilla link.")
 
 	if 'filing_info' not in config:
 		config['filing_info'] = ''
@@ -67,6 +68,8 @@ def get_mozilla_version(config):
 			config['current_version_fetch_location'],
 			config['current_version_fetch_ssl_verify'], 
 			config['current_version_re'])
+	elif config['current_version_fetch_type'] == 'hardcoded':
+		current_version = config['current_version_fetch_location']
 	else:
 		raise Exception("Received an unknown current_version_fetch_type: " + str(config['current_version_fetch_type']))
 
@@ -244,6 +247,18 @@ LIBRARIES = [
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/icu/SVN-INFO",
 		'current_version_re': "Relative URL: \^/tags/release-([0-9-]+)/icu4c",
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
+	},
+	{
+		'title' : 'brotli',
+		'location' : 'modules/brotli',
+		'filing_info' : '(When brotli upgrades, see if the current dev branch is master or v0.5. Fix the mozilla update.sh script to output the version (like in #1341895).)',
+		'ignore' : '0.5.2', #1340910
+
+		'latest_version_fetch_type' : 'github_rss',
+		'latest_version_fetch_location' : 'https://github.com/google/brotli',
+
+		'current_version_fetch_type' : 'hardcoded',
+		'current_version_fetch_location': "0.4.0",
 	},
 	{
 		'title' : 'libbz2',
