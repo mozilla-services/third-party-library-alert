@@ -238,6 +238,18 @@ def fetch_and_compare(config):
 
 LIBRARIES = [
 	{
+		'title' : 'libogg',
+		'location' : 'media/libogg/',
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'https://xiph.org/downloads/',
+		'latest_version_re' : "<td>libogg</td>\s<td>([0-9.]+)</td>",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
+		'current_version_re': "Version: ([0-9.]+)",
+	},
+	{
 		'title' : 'icu',
 		'location' : 'intl/icu',
 
