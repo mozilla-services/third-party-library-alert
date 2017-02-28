@@ -249,6 +249,20 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'xz-embedded',
+		'location' : 'modules/xz-embedded',
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'http://git.tukaani.org/?p=xz-embedded.git;a=log;h=refs/heads/master',
+		'latest_version_re' : "<a class=\"title\" href=\"/\?p=xz-embedded\.git;a=commit;h=([a-f0-9A-F]{40})",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/xz-embedded/README.mozilla",
+		'current_version_re': "Current version: \[([a-f0-9A-F]{40})\]",
+
+		'compare_type' : 'equality'
+	},
+	{
 		'title' : 'cubeb',
 		'location' : 'media/libcubeb/',
 		#'ignore' : "2017-02-17 01:34:22",
