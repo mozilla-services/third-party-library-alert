@@ -119,6 +119,8 @@ def _latest_version_directory_crawl(config):
 def get_latest_version(config):
 	if config['latest_version_fetch_type'] == 'github_rss':
 		latest_version = _latest_version_github_rss(config)
+	elif config['latest_version_fetch_type'] == 'hardcoded':
+		latest_version = config['latest_version_fetch_location']
 	elif config['latest_version_fetch_type'] == 'find_in_directory':
 		latest_version = _latest_version_directory_crawl(config)
 	elif 'html_re' in config['latest_version_fetch_type']:
@@ -247,6 +249,20 @@ LIBRARIES = [
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/icu/SVN-INFO",
 		'current_version_re': "Relative URL: \^/tags/release-([0-9-]+)/icu4c",
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
+	},
+	{
+		'title' : 'sctp',
+		'location' : 'netwerk/sctp',
+		'filing_info' : 'When Mozilla finally updates SCTP, address this library',
+
+		'latest_version_fetch_type' : 'hardcoded',
+		'latest_version_fetch_location' : 'Mar 24 18:11:59 EDT 2015',
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/sctp/sctp_update.log",
+		'current_version_re': "sctp updated to version [^\s]+ from [^\s]+ on .+? (.+)$",
+
+		'compare_type' : 'equality',
 	},
 	{
 		'title' : 'xz-embedded',
