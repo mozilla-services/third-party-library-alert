@@ -249,6 +249,19 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'Hyphen',
+		'location' : 'intl/hyphenation/',
+		'filing_info' : 'CC:ryanvm',
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/files/Hyphen/',
+		'latest_version_re' : "Download hyphen-([0-9.]+).tar.gz",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/hyphenation/hyphen/NEWS",
+		'current_version_re': "[0-9-]+ Hyphen ([0-9.]+):",
+	},
+	{
 		'title' : 'brotli',
 		'location' : 'modules/brotli',
 		'filing_info' : '(When brotli upgrades, see if the current dev branch is master or v0.5. Fix the mozilla update.sh script to output the version (like in #1341895).)',
@@ -472,18 +485,6 @@ LIBRARIES = [
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
 		'current_version_re': "Hunspell Version:\s*v?([0-9\.]+)",
 	},
-	#{
-	#	'title' : 'Hyphen',
-	#	'location' : 'intl/hyphenation/',
-	#	'filing_info' : 'CC:ryanvm',
-
-	#	'latest_version_fetch_type' : '',
-	#	'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/files/Hyphen/',
-
-	#	'current_version_fetch_type' : 'html_re',
-	#	'current_version_fetch_location': "",
-	#	'current_version_re': "",
-	#},
 	{
 		'title' : 'Codemirror',
 		'filing_info' : 'Firefox: Developer Tools: Source Editor',
