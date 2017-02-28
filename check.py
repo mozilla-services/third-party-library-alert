@@ -45,6 +45,9 @@ def validate_config(config):
 	if 'compare_type' not in config:
 		config['compare_type'] = 'version'
 
+	if 'additional_library_info' not in config:
+		config['additional_library_info'] = ''
+
 	return config
 
 ################################################################################
@@ -116,11 +119,43 @@ def _latest_version_directory_crawl(config):
 	else:
 		raise Exception("Could not match the regular expression '" + str(regex) + "' in the text\n\n" + str(t.text))	
 
+def _latest_version_list(config):
+	latest_version = "2000-01-01T12:00:00Z"
+	for i in config['latest_version_fetch_location_list']:
+		this_version = _fetch_html_re('html_re',
+			config['latest_version_fetch_location_base'] + i,
+			config['latest_version_fetch_ssl_verify'],
+			config['latest_version_re'])
+
+		fake_config = {
+			'current_version' : latest_version,
+			'current_version_date_format_string' : config['latest_version_date_format_string'],
+			'latest_version' : this_version,
+			'latest_version_date_format_string' : config['latest_version_date_format_string'],
+			'compare_date_lag' : 0,
+			'verbose' : False
+		}
+		if _compare_type_date(fake_config) == UPDATE:
+			latest_version = this_version
+			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
+
+			if 'latest_version_addition_info_re' in config:
+				config['additional_library_info'] =
+					"-----------------------\nCommit Message:\n"
+					_fetch_html_re('html_re',
+					config['latest_version_fetch_location_base'] + i,
+					config['latest_version_fetch_ssl_verify'],
+					config['latest_version_addition_info_re'])
+	return latest_version
+
+
 def get_latest_version(config):
 	if config['latest_version_fetch_type'] == 'github_rss':
 		latest_version = _latest_version_github_rss(config)
 	elif config['latest_version_fetch_type'] == 'hardcoded':
 		latest_version = config['latest_version_fetch_location']
+	elif config['latest_version_fetch_type'] == 'list':
+		latest_version = _latest_version_list(config)
 	elif config['latest_version_fetch_type'] == 'find_in_directory':
 		latest_version = _latest_version_directory_crawl(config)
 	elif 'html_re' in config['latest_version_fetch_type']:
@@ -595,7 +630,65 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libjpeg/MOZCHANGES",
 		'current_version_re': "Updated to v([0-9\.]+) release.",
-	}
+	},
+	{
+		'title' : 'fdlibm',
+		'location' : 'modules/fdlibm',
+
+		'latest_version_fetch_type' : 'list',
+		'latest_version_fetch_location_base' : 'https://github.com/freebsd/freebsd/commits/master/lib/msun/src/',
+		'latest_version_fetch_location_list' : [
+			'math.h',
+			'math_private.h',
+			'e_acos.c',
+			'e_acosh.c',
+			'e_asin.c',
+			's_asinh.c',
+			's_atan.c',
+			'e_atanh.c',
+			'e_atan2.c',
+			's_cbrt.c',
+			's_ceil.c',
+			's_ceilf.c',
+			'e_cosh.c',
+			'e_exp.c',
+			's_expm1.c',
+			's_floor.c',
+			's_floorf.c',
+			'e_hypot.c',
+			'e_log.c',
+			's_log1p.c',
+			'e_log10.c',
+			'k_log.h',
+			'e_log2.c',
+			'e_sinh.c',
+			's_tanh.c',
+			's_trunc.c',
+			's_truncf.c',
+			'k_exp.c',
+			's_copysign.c',
+			's_fabs.c',
+			's_scalbn.c',
+			'e_pow.c',
+			'e_sqrt.c',
+			's_nearbyint.c',
+			's_rint.c',
+			's_rintf.c',
+			],
+		'latest_version_re' : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
+		'latest_version_date_format_string' : "%Y-%m-%dT%H:%M:%SZ",
+		'latest_version_addition_info_re' : "<a href=\"/freebsd/freebsd/commit/[a-fA-F0-9]{40}\" class=\"message\" .+ title=\"([^\"]+)\">",
+
+		'current_version_fetch_type' : 'hardcoded',
+		#'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "2016-09-04T12:01:32Z",
+		#'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
+		#'current_version_re': "Current version: \[commit [0-9a-fA-F.]{40} (.+)\].",
+		'current_version_date_format_string' : "%Y-%m-%dT%H:%M:%SZ",
+
+		'compare_type' : 'date',
+		'compare_date_lag' : 1,
+	},
 ]
 
 ################################################################################
@@ -606,13 +699,13 @@ Update %(title)s to %(latest_version)s
 ---------
 %(filing_info)s Blocks: 1325608
 ---------
-This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library.
+This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library. You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
 
 %(title)s is currently at version %(current_version)s in mozilla-central, and the latest version of the library released is %(latest_version)s. 
 
 I fetched the latest version of the library from %(latest_version_fetch_location)s.
 
-You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
+%(additional_library_info)s
 =========================
 """
 
