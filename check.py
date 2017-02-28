@@ -249,6 +249,25 @@ LIBRARIES = [
 		'current_version_post_alter' : lambda x : x.replace("-", "."),
 	},
 	{
+		'title' : 'cubeb',
+		'location' : 'media/libcubeb/',
+		#'ignore' : "2017-02-17 01:34:22",
+		#'ignore_date_format_string' : "%Y-%m-%d %H:%M:%S",
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'https://github.com/kinetiknz/cubeb/commits/master',
+		'latest_version_re' : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
+		'latest_version_date_format_string' : "%Y-%m-%dT%H:%M:%SZ",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location' : 'https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libcubeb/README_MOZILLA',
+		'current_version_re' : 'The git commit ID used was [a-fA-F0-9]{40} \(([-0-9 :]+) ',
+		'current_version_date_format_string' : "%Y-%m-%d %H:%M:%S",
+		
+		'compare_type' : 'date',
+		'compare_date_lag' : 30,
+	},
+	{
 		'title' : 'Hyphen',
 		'location' : 'intl/hyphenation/',
 		'filing_info' : 'CC:ryanvm',
