@@ -466,6 +466,7 @@ LIBRARIES = [
 		'title' : 'jemalloc',
 		'filing_info' : 'CC:ryanvm',
 		'location' : 'memory/jemalloc',
+		'ignore' : '4.5.0', #1343432
 
 		'latest_version_fetch_type' : 'github_rss',
 		'latest_version_fetch_location' : 'https://github.com/jemalloc/jemalloc/',
@@ -533,7 +534,7 @@ LIBRARIES = [
 		'title' : 'skia',
 		'filing_info' : 'Core:Graphics blocks:1210886',
 		'location' : 'gfx/skia',
-		'ignore' : '57', #1338658
+		'ignore' : '58', #1340627
 
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h',
@@ -634,6 +635,9 @@ LIBRARIES = [
 	{
 		'title' : 'fdlibm',
 		'location' : 'modules/fdlibm',
+		'filing_info' : 'Javascript Engine CC::bbouvier ni::arai',
+		'ignore' : "2016-09-28 14:48:34",
+		'ignore_date_format_string' : "%Y-%m-%d %H:%M:%S", #1343924
 
 		'latest_version_fetch_type' : 'list',
 		'latest_version_fetch_location_base' : 'https://github.com/freebsd/freebsd/commits/master/lib/msun/src/',
@@ -679,11 +683,10 @@ LIBRARIES = [
 		'latest_version_date_format_string' : "%Y-%m-%dT%H:%M:%SZ",
 		'latest_version_addition_info_re' : "<a href=\"/freebsd/freebsd/commit/[a-fA-F0-9]{40}\" class=\"message\" .+ title=\"([^\"]+)\">",
 
-		'current_version_fetch_type' : 'hardcoded',
-		#'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "2016-09-04T12:01:32Z",
-		#'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
-		#'current_version_re': "Current version: \[commit [0-9a-fA-F.]{40} (.+)\].",
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
+		'current_version_re': "Current version: \[commit [0-9a-fA-F.]{40} \((.+)\)\].",
 		'current_version_date_format_string' : "%Y-%m-%dT%H:%M:%SZ",
 
 		'compare_type' : 'date',
