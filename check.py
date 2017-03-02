@@ -140,8 +140,8 @@ def _latest_version_list(config):
 			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
 
 			if 'latest_version_addition_info_re' in config:
-				config['additional_library_info'] =
-					"-----------------------\nCommit Message:\n"
+				config['additional_library_info'] = "" +
+					"-----------------------\nCommit Message:\n" +
 					_fetch_html_re('html_re',
 					config['latest_version_fetch_location_base'] + i,
 					config['latest_version_fetch_ssl_verify'],
