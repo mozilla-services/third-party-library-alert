@@ -206,7 +206,9 @@ def _compare_type_date(config):
 	config['current_version'] = datetime.datetime.strptime(config['current_version'], config['current_version_date_format_string'])
 	config['latest_version'] = datetime.datetime.strptime(config['latest_version'], config['latest_version_date_format_string'])
 
-	if config['latest_version'] - config['current_version'] > datetime.timedelta(days=config['compare_date_lag']):
+	td = config['latest_version'] - config['current_version']
+	td = td + -2*td if td < datetime.timedelta() else td #Handle negatives (we kind of ignore timezones...)
+	if td >= datetime.timedelta(days=config['compare_date_lag']):
 		status = UPDATE
 	else:
 		if config['latest_version'] != config['current_version'] and config['verbose']:
@@ -223,20 +225,34 @@ def fetch_and_compare(config):
 	if config['compare_type'] == 'version':
 		status = _compare_type_version(config)
 		if status != OK and 'ignore' in config and config['latest_version'] == config['ignore']:
-			should_ignore = True
+			if 'ignore_until' in config:
+				if datetime.datetime.now() < config['ignore_until']:
+					should_ignore = True
+			else:
+				should_ignore = True
 
 	elif config['compare_type'] == 'equality':
 		status = _compare_type_equality(config)
 		if status != OK and 'ignore' in config and config['latest_version'] == config['ignore']:
-			should_ignore = True
+			if 'ignore_until' in config:
+				if datetime.datetime.now() < config['ignore_until']:
+					should_ignore = True
+			else:
+				should_ignore = True
 
 	elif config['compare_type'] == 'date':
 		status = _compare_type_date(config)
-
 		if status == UPDATE and 'ignore' in config:
 			ignore_date = datetime.datetime.strptime(config['ignore'], config['ignore_date_format_string'])
-			if config['latest_version'] - ignore_date < datetime.timedelta(days=config['compare_date_lag']):
-				should_ignore = True
+			if config['latest_version'] - ignore_date <= datetime.timedelta(days=config['compare_date_lag']):
+				if 'ignore_until' in config:
+					if datetime.datetime.now() < config['ignore_until']:
+						should_ignore = True
+				else:
+					should_ignore = True
+
+	else:
+		raise Exception("Unknown comparison type: " + str(config['compare_type']))
 
 	if status != OK:
 		if should_ignore:
@@ -519,6 +535,27 @@ LIBRARIES = [
 		'current_version_re': "([0-9\.]+)",
 	},
 	{
+		'title' : 'double-conversion',
+		'location' : 'mfbt/double-conversion',
+		'filing_info' : 'Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT',
+		'ignore' : '2016-11-23',
+		'ignore_date_format_string' : "%Y-%m-%d",
+		#'ignore_until' : datetime.datetime.strptime('2017-3-2', "%Y-%m-%d") + datetime.timedelta(days=7),
+		
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'https://github.com/google/double-conversion',
+		'latest_version_re' : "<relative-time datetime=\"([0-9-A-Z:a-z]+)T",
+		'latest_version_date_format_string' : "%Y-%m-%d",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/double-conversion/GIT-INFO",
+		'current_version_re': "Date:\s+[^\s]+ ([0-9a-zA-Z: ]+) \+*[0-9]*",
+		'current_version_date_format_string' : "%b %d %H:%M:%S %Y",
+		
+		'compare_type' : 'date',
+		'compare_date_lag' : 0,
+	},
+	{
 		'title' : 'zlib',
 		'location' : 'modules/zlib',
 
@@ -635,7 +672,7 @@ LIBRARIES = [
 	{
 		'title' : 'fdlibm',
 		'location' : 'modules/fdlibm',
-		'filing_info' : 'Javascript Engine CC::bbouvier ni::arai',
+		'filing_info' : '1343924 Javascript Engine CC::bbouvier ni::arai',
 		'ignore' : "2016-09-28 14:48:34",
 		'ignore_date_format_string' : "%Y-%m-%d %H:%M:%S", #1343924
 
@@ -718,6 +755,7 @@ if __name__ == "__main__":
 		verbose = True
 
 	if len(sys.argv) > 1 and sys.argv[1] != '-v':
+		verbose = True
 		libraries = sys.argv[1:]
 	else:
 		libraries = None
