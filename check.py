@@ -140,8 +140,8 @@ def _latest_version_list(config):
 			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
 
 			if 'latest_version_addition_info_re' in config:
-				config['additional_library_info'] = "" +
-					"-----------------------\nCommit Message:\n" +
+				config['additional_library_info'] = "" + \
+					"-----------------------\nCommit Message:\n" + \
 					_fetch_html_re('html_re',
 					config['latest_version_fetch_location_base'] + i,
 					config['latest_version_fetch_ssl_verify'],
@@ -697,7 +697,7 @@ bug_message = """
 =========================
 Update %(title)s to %(latest_version)s
 ---------
-%(filing_info)s Blocks: 1325608
+Blocks: 1325608 %(filing_info)s
 ---------
 This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library. You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
 
@@ -714,9 +714,17 @@ if __name__ == "__main__":
 	if '-v' in sys.argv:
 		verbose = True
 
+	if len(sys.argv) > 1 and sys.argv[1] != '-v':
+		libraries = sys.argv[1:]
+	else:
+		libraries = None
+
 	return_code = OK
 
 	for l in LIBRARIES:
+		if libraries and l['title'] not in libraries:
+			continue
+
 		config = l
 		config['verbose'] = verbose
 
