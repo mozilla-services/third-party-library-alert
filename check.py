@@ -295,6 +295,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://xiph.org/downloads/',
 		'latest_version_re' : "<td>libogg</td>\s<td>([0-9.]+)</td>",
+		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
 
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
@@ -657,7 +658,7 @@ LIBRARIES = [
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/tern/README",
 		'current_version_re': "Currently used version is ([0-9\.]+)\.",
 	},
-		{
+	{
 		'title' : 'libjpeg-turbo',
 		'location' : 'media/libjpeg',
 		'filing_info' : 'CC:ryanvm',
