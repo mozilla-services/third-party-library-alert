@@ -367,8 +367,8 @@ LIBRARIES = [
 		'filing_info' : 'CC:ryanvm',
 
 		'latest_version_fetch_type' : 'html_re',
-		'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/files/Hyphen/',
-		'latest_version_re' : "Download hyphen-([0-9.]+).tar.gz",
+		'latest_version_fetch_location' : 'https://sourceforge.net/projects/hunspell/rss?path=/Hyphen',
+		'latest_version_re' : "<title><!\[CDATA\[/Hyphen/[0-9.]+/hyphen-([0-9.]+).tar.gz",
 
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/hyphenation/hyphen/NEWS",
