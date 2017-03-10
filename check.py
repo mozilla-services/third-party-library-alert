@@ -3,6 +3,7 @@
 import os
 import re
 import sys
+import base64
 import datetime
 import requests
 import traceback
@@ -45,8 +46,15 @@ def validate_config(config):
 	if 'compare_type' not in config:
 		config['compare_type'] = 'version'
 
-	if 'additional_library_info' not in config:
-		config['additional_library_info'] = ''
+	if 'print_additional_library_info' not in config:
+		config['print_additional_library_info'] = ''
+
+	return config
+
+def munge_config_for_printing(config):
+	if 'print_latest_version_fetch_location_munge' in config:
+		config['latest_version_fetch_location'] = \
+			config['print_latest_version_fetch_location_munge'](config['latest_version_fetch_location'])
 
 	return config
 
@@ -56,12 +64,17 @@ def _fetch_html_re(fetch_type, fetch_location, fetch_ssl_verify, regular_express
 	flags = re.DOTALL if fetch_type == 'dotall_html_re' else 0
 
 	t = requests.get(fetch_location, verify=fetch_ssl_verify)
-	m = re.search(regular_expression, t.text, flags)
+	if fetch_type == 'html_re_base64':
+		searchtext = base64.b64decode(t.text)
+	else:
+		searchtext = t.text
+
+	m = re.search(regular_expression, searchtext, flags)
 	if m:
 		matched_text = m.groups(0)[0]
 		return matched_text 
 	else:
-		raise Exception(u"Could not match the regular expression '" + regular_expression + u"' in the text\n\n" + t.text)
+		raise Exception(u"Could not match the regular expression '" + regular_expression + u"' in the text\n\n" + searchtext)
 
 ################################################################################
 
@@ -140,7 +153,7 @@ def _latest_version_list(config):
 			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
 
 			if 'latest_version_addition_info_re' in config:
-				config['additional_library_info'] = "" + \
+				config['print_additional_library_info'] = "" + \
 					"-----------------------\nCommit Message:\n" + \
 					_fetch_html_re('html_re',
 					config['latest_version_fetch_location_base'] + i,
@@ -274,6 +287,7 @@ def fetch_and_compare(config):
 			if config['verbose']:
 				print "\tCurrent version (" + str(config['current_version']) + ") is behind latest (" + str(config['latest_version']) + ")"
 
+			config = munge_config_for_printing(config)
 			print bug_message % config
 	
 	config['status'] = status
@@ -360,6 +374,25 @@ LIBRARIES = [
 		
 		'compare_type' : 'date',
 		'compare_date_lag' : 30,
+	},
+	{
+		'title' : 'libyuv',
+		'location' : 'media/libyuv/',
+		'filing_info' : 'Blocks: 1284800 Core:Graphics',
+		'ignore' : '0741a3d70400dc96e59726674b0acf3bca02d710', #1346291
+
+		'latest_version_fetch_type' : 'html_re_base64',
+		'latest_version_fetch_location' : 'https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT',
+		'latest_version_re' : "'/libyuv/libyuv\.git' \+ '@' \+ '([a-fA-F0-9]{40})',",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location' : 'https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libyuv/README_MOZILLA',
+		'current_version_re' : 'The git commit ID last used to import was ([a-fA-F0-9]{40})',
+		
+		'print_latest_version_fetch_location_munge' : lambda x : x.replace("?format=TEXT", ""),
+		'print_additional_library_info' : "(Technically, this 'latest commit' is not a release, but Chromium has rolled their dependency of libyuv.)",
+
+		'compare_type' : 'equality',
 	},
 	{
 		'title' : 'Hyphen',
@@ -746,7 +779,7 @@ This is a (semi-)automated bug making you aware that there is an available upgra
 
 I fetched the latest version of the library from %(latest_version_fetch_location)s.
 
-%(additional_library_info)s
+%(print_additional_library_info)s
 =========================
 """
 
