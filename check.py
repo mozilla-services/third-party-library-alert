@@ -572,9 +572,9 @@ LIBRARIES = [
 		'title' : 'double-conversion',
 		'location' : 'mfbt/double-conversion',
 		'filing_info' : 'Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT',
-		'ignore' : '2017-03-06',
+		'ignore' : '2017-03-06', #1346853
 		'ignore_date_format_string' : "%Y-%m-%d",
-		'ignore_until' : datetime.datetime.strptime('2017-03-06', "%Y-%m-%d") + datetime.timedelta(days=7),
+		#'ignore_until' : datetime.datetime.strptime('2017-03-06', "%Y-%m-%d") + datetime.timedelta(days=7),
 		
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://github.com/google/double-conversion',
