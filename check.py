@@ -627,7 +627,7 @@ LIBRARIES = [
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
 		'current_version_re': "Current version:\s*([0-9\.]+)",
-		'ignore' : '1.4.4' #1344578 
+		'ignore' : '1.4.5' #1344578 
 	},
 	{
 		'title' : 'Graphite2',
