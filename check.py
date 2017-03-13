@@ -342,6 +342,10 @@ LIBRARIES = [
 
 		'compare_type' : 'equality',
 	},
+	#{
+		# 'title' : 'angle',
+		# Currently we ignore Angle because it's in constant development and we have a weird fork of it
+	#},
 	{
 		'title' : 'xz-embedded',
 		'location' : 'modules/xz-embedded',
