@@ -296,10 +296,17 @@ def fetch_and_compare(config):
 
 ################################################################################
 
-#ryanvm:
-#libevent
-
-#libpng can be ignored since the maintainer updates it
+# Ignored Libraries:
+# - EmojiOne Mozilla: browser/fonts/	https://github.com/mozilla/emojione-colr
+# 	Not security related, Mozilla is upstream maintainer
+# - Blink Web Audio dom/media/webaudio/blink	https://chromium.googlesource.com/chromium/blink/+log/master/Source/modules/webaudio
+# 	Heavy fork
+# - libmkv media/libmkv https://chromium.googlesource.com/webm/libvpx/
+# 	Upstream abandoned
+# - libnestegg media/libnestegg	github.com/kinetiknz/nestegg.git
+# 	Mozilla is upstream maintainer
+# - libpng media/libpng	http://libpng.org/pub/png/
+# 	Mozilla is upstream maintainer
 
 LIBRARIES = [
 	{
