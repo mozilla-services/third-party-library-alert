@@ -502,6 +502,19 @@ LIBRARIES = [
 		'current_version_re': "FreeType ([0-9\.]+)",
 	},
 	{
+		'title' : 'libevent',
+		'filing_info' : 'CC:ryanvm',
+		'location' : 'modules/freetype2',
+
+		'latest_version_fetch_type' : 'html_re',
+		'latest_version_fetch_location' : 'https://raw.githubusercontent.com/libevent/libevent/patches-2.0/configure.ac',
+		'latest_version_re' : "AM_INIT_AUTOMAKE\(libevent,([0-9.]+)",
+
+		'current_version_fetch_type' : 'html_re',
+		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/ipc/chromium/src/third_party/libevent/configure.ac",
+		'current_version_re': "AM_INIT_AUTOMAKE\(libevent,([0-9.]+)",
+	},
+	{
 		'title' : 'libffi',
 		'filing_info' : 'CC:ryanvm Core:js-ctypes',
 		'location' : 'js/src/ctypes',
