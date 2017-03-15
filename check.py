@@ -11,6 +11,9 @@ import feedparser
 from distutils.version import LooseVersion
 
 # Sometimes we don't do certificate validation because we're naughty
+# Actually, the problem is that Ubuntu 14.04 (which is what TaskCluster uses)
+# ships 2.7.6 which doesn't give us SNI support.
+# See http://docs.python-requests.org/en/master/community/faq/#what-are-hostname-doesn-t-match-errors
 try:
 	from requests.packages.urllib3.exceptions import InsecureRequestWarning
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -316,7 +319,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://xiph.org/downloads/',
 		'latest_version_re' : "<td>libogg</td>\s<td>([0-9.]+)</td>",
-		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
+		'latest_version_fetch_ssl_verify' : False, #SAN/SNI problems
 
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
@@ -530,7 +533,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://sourceware.org/libffi/',
 		'latest_version_re' : "<b>libffi-([0-9.]+)</b> was released",
-		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
+		'latest_version_fetch_ssl_verify' : False, #SAN/SNI problems
 
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
@@ -558,7 +561,7 @@ LIBRARIES = [
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://www.sqlite.org/chronology.html',
 		'latest_version_re' : "<h1 align=center>History Of SQLite Releases<\/h1>\s+<center>\s+<table border=0 cellspacing=0>\s+<thead>\s+<tr><th>Date<th><th align='left'>Version\s+<\/thead>\s+<tbody>\s+<tr><td><a href='https:\/\/www\.sqlite\.org\/src\/timeline\?c=[0-9a-z]+\&y=ci'>[0-9-]+<\/a><\/td>\s+<td width='20'><\/td>\s+<td><a href=\"releaselog\/[0-9_]+\.html\">([0-9.]+)<\/a><\/td><\/tr>",
-		'latest_version_fetch_ssl_verify' : False, #certificate verify failed
+		#'latest_version_fetch_ssl_verify' : False, #certificate verify failed
 
 		'current_version_fetch_type' : 'html_re',
 		'current_version_fetch_location': "https://hg.mozilla.org/mozilla-central/raw-file/tip/old-configure.in",
@@ -571,7 +574,7 @@ LIBRARIES = [
 
 		'latest_version_fetch_type' : 'html_re',
 		'latest_version_fetch_location' : 'https://www.cairographics.org/releases/',
-		'latest_version_fetch_ssl_verify' : False, #SAN bug on the server I can't reproduce locally
+		'latest_version_fetch_ssl_verify' : False, #SAN/SNI problems
 		'latest_version_re' : "LATEST-pixman-([0-9.]+)",
 
 		'current_version_fetch_type' : 'html_re',
