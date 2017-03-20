@@ -165,7 +165,7 @@
 	{
 		"title" : "OTS",
 		"location" : "gfx/ots",
-		"filing_info" : "Graphics:Text",
+		"filing_info" : "Graphics:Text Blocks-Prior-bug:1348788 CC:RyanVM CC:fredw",
 		"ignore" : "5.2.0", # 1348788
 
 		"latest_version_fetch_type" : "github_rss",
