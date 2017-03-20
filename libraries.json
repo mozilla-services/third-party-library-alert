@@ -97,7 +97,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "0741a3d70400dc96e59726674b0acf3bca02d710", # 1346291
+		"ignore" : "2adb84e39e360723d19c68f315d99e3e0f88318c", # 1346291
 
 		"latest_version_fetch_type" : "html_re_base64",
 		"latest_version_fetch_location" : "https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT",
@@ -165,6 +165,8 @@
 	{
 		"title" : "OTS",
 		"location" : "gfx/ots",
+		"filing_info" : "Graphics:Text",
+		"ignore" : "5.2.0", # 1348788
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/khaledhosny/ots/",
