@@ -41,6 +41,8 @@ def validate_config(config):
 
 	if 'filing_info' not in config:
 		config['filing_info'] = ''
+	if 'most_recent_bug' not in config:
+		config['most_recent_bug'] = ''
 
 	if 'current_version_fetch_ssl_verify' not in config:
 		config['current_version_fetch_ssl_verify'] = True
@@ -319,7 +321,8 @@ bug_message = """
 =========================
 Update %(title)s to %(latest_version)s
 ---------
-Blocks: 1325608 %(filing_info)s
+Blocks: 1325608 %(filing_info)s 
+Most Recent: %(most_recent_bug)s
 ---------
 This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library. You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
 
