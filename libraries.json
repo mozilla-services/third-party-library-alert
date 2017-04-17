@@ -352,7 +352,7 @@
 		"title" : "skia",
 		"filing_info" : "Core:Graphics blocks:1210886",
 		"location" : "gfx/skia",
-		"ignore" : "58",
+		"ignore" : "59",
 		"most_recent_bug" : 1340627,
 
 		"latest_version_fetch_type" : "html_re",
@@ -462,7 +462,7 @@
 		"title" : "raven-js",
 		"location" : "https://github.com/mozilla-services/screenshots",
 		"filing_info" : "https://github.com/mozilla-services/screenshots/issues",
-		"ignore" : "3.14.1",
+		"ignore" : "3.14.2",
 		"most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/2678",
 
 		"latest_version_fetch_type" : "github_rss",
