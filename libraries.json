@@ -371,8 +371,8 @@
 		"title" : "Harfbuzz",
 		"location" : "gfx/harfbuzz/",
 		"filing_info" : "Core:Graphics:Text CC:ryanvm",
-		"ignore" : "1.4.5",
-		"most_recent_bug" : 1344578,
+		"ignore" : "1.4.6",
+		"most_recent_bug" : 1358502,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/behdad/harfbuzz/",
