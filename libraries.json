@@ -307,7 +307,7 @@
 		"title" : "libav",
 		"location" : "media/libav",
 		"filing_info" : "Core:Audio/Video",
-		"ignore" : "12",
+		"ignore" : "12.1",
 		"most_recent_bug" : 1339521,
 
 		"latest_version_fetch_type" : "html_re",
