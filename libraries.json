@@ -104,7 +104,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "8edd2286fdf9df2b9da806bda7ed262492f95921",
+		"ignore" : "7bffe5e1c54bc22daebd57003735e61693719ac6",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
