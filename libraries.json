@@ -469,7 +469,8 @@
 		"title" : "image-operations",
 		"location" : "gfx/2d/",
 		"filing_info" : "",
-		#"ignore" : "",
+		"ignore" : "2017-06-06 18:26:58",
+		"ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
 		"most_recent_bug" : 1371689,
 
 		"latest_version_fetch_type" : "list",
