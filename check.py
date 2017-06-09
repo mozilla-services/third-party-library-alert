@@ -177,7 +177,7 @@ def _latest_version_list(config):
 				if 'print_additional_library_info' not in config:
 					config['print_additional_library_info'] = ""
 				config['print_additional_library_info'] += \
-					"\n-----------------------\nMost Recent Commit Message for " +
+					"\n-----------------------\nMost Recent Commit Message for " + \
 					i + ":\n" + \
 					_fetch_html_re('html_re',
 					config['latest_version_fetch_location_base'] + i,
