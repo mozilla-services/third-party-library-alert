@@ -35,7 +35,8 @@ def validate_config(config):
 	   not config['latest_version_fetch_location'].endswith('/'):
 		config['latest_version_fetch_location'] += '/'
 
-	if config['current_version_fetch_location'].startswith('https://hg.mozilla.org/') \
+	if 'current_version_fetch_location' in config and \
+		config['current_version_fetch_location'].startswith('https://hg.mozilla.org/') \
 		and not config['current_version_fetch_location'].startswith('https://hg.mozilla.org/mozilla-central/raw-file/tip/'):
 		raise Exception("current_version_fetch_location (" + config['current_version_fetch_location'] + ") does not appear to be a raw hg.mozilla link.")
 
@@ -96,6 +97,8 @@ def get_mozilla_version(config):
 			config['current_version_re'])
 	elif config['current_version_fetch_type'] == 'hardcoded':
 		current_version = config['current_version_fetch_location']
+	elif config['current_version_fetch_type'] == 'list':
+		raise Exception("List not implemented for Mozilla")
 	else:
 		raise Exception("Received an unknown current_version_fetch_type: " + str(config['current_version_fetch_type']))
 
@@ -143,33 +146,44 @@ def _latest_version_directory_crawl(config):
 		raise Exception("Could not match the regular expression '" + str(regex) + "' in the text\n\n" + str(t.text))	
 
 def _latest_version_list(config):
-	latest_version = "2000-01-01T12:00:00Z"
+	#Find all files with a commit newer than the current version date, but put the 'latest' version as the most recent
+	min_value = datetime.datetime.strptime("2000-01-01T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+	newest_latest_version = min_value
+
 	for i in config['latest_version_fetch_location_list']:
-		this_version = _fetch_html_re('html_re',
+		this_latest_version = _fetch_html_re('html_re',
 			config['latest_version_fetch_location_base'] + i,
 			config['latest_version_fetch_ssl_verify'],
 			config['latest_version_re'])
+		this_latest_version_date = datetime.datetime.strptime(this_latest_version, config['latest_version_date_format_string'])
 
 		fake_config = {
-			'current_version' : latest_version,
-			'current_version_date_format_string' : config['latest_version_date_format_string'],
-			'latest_version' : this_version,
+			'current_version' : config['current_version'],
+			'current_version_date_format_string' : config['current_version_date_format_string'],
+			'latest_version' : this_latest_version,
 			'latest_version_date_format_string' : config['latest_version_date_format_string'],
 			'compare_date_lag' : 0,
 			'verbose' : False
 		}
-		if _compare_type_date(fake_config) == UPDATE:
-			latest_version = this_version
+		if newest_latest_version == min_value:
+			newest_latest_version = this_latest_version
+			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
+		elif datetime.datetime.strptime(newest_latest_version, config['latest_version_date_format_string']) < this_latest_version_date:
+			newest_latest_version = this_latest_version
 			config['latest_version_fetch_location'] = config['latest_version_fetch_location_base'] + i
 
+		if _compare_type_date(fake_config) == UPDATE:
 			if 'latest_version_addition_info_re' in config:
-				config['print_additional_library_info'] = "" + \
-					"-----------------------\nCommit Message:\n" + \
+				if 'print_additional_library_info' not in config:
+					config['print_additional_library_info'] = ""
+				config['print_additional_library_info'] += \
+					"\n-----------------------\nMost Recent Commit Message for " +
+					i + ":\n" + \
 					_fetch_html_re('html_re',
 					config['latest_version_fetch_location_base'] + i,
 					config['latest_version_fetch_ssl_verify'],
 					config['latest_version_addition_info_re'])
-	return latest_version
+	return newest_latest_version
 
 
 def get_latest_version(config):
@@ -178,6 +192,8 @@ def get_latest_version(config):
 	elif config['latest_version_fetch_type'] == 'hardcoded':
 		latest_version = config['latest_version_fetch_location']
 	elif config['latest_version_fetch_type'] == 'list':
+		if config['compare_type'] != 'date':
+			raise Exception("Lsit type is only supported with Date Comparison")
 		latest_version = _latest_version_list(config)
 	elif config['latest_version_fetch_type'] == 'find_in_directory':
 		latest_version = _latest_version_directory_crawl(config)
