@@ -468,7 +468,7 @@
 		"title" : "raven-js",
 		"location" : "https://github.com/mozilla-services/screenshots",
 		"filing_info" : "https://github.com/mozilla-services/screenshots/issues",
-		"ignore" : "3.15.0",
+		"ignore" : "3.16.0",
 		"most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/2826",
 
 		"latest_version_fetch_type" : "github_rss",
