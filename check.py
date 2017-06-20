@@ -319,6 +319,9 @@ def fetch_and_compare(config):
 			else:
 				if config['verbose']:
 					print "\tCurrent version (" + str(config['current_version']) + ") is AHEAD of latest (" + str(config['latest_version']) + ")?!?!"
+
+				config = munge_config_for_printing(config)
+				print bug_message % config
 		
 		else:
 			if config['verbose']:
