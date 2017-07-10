@@ -456,7 +456,9 @@
 	{
 		"title" : "libjpeg-turbo",
 		"location" : "media/libjpeg",
-		"filing_info" : "CC:ryanvm",
+		"ignore" : "1.5.2",
+		"filing_info" : "Core::ImageLib CC:ryanvm",
+		"most_recent_bug" : 1379663,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/libjpeg-turbo/libjpeg-turbo",
