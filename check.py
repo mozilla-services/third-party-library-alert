@@ -319,7 +319,7 @@ def fetch_and_compare(config):
 			else:
 				if config['verbose']:
 					print "\tCurrent version (" + str(config['current_version']) + ") is AHEAD of latest (" + str(config['latest_version']) + ")?!?!"
-
+				
 				config = munge_config_for_printing(config)
 				print bug_message % config
 		
@@ -340,7 +340,7 @@ bug_message = """
 =========================
 Update %(title)s to %(latest_version)s
 ---------
-%(filing_info)s 
+Whiteboard: [third-party-lib-audit] %(filing_info)s 
 Most Recent: %(most_recent_bug)s
 ---------
 This is a (semi-)automated bug making you aware that there is an available upgrade for an embedded third-party library. You can leave this bug open, and it will be updated if a newer version of the library becomes available. If you close it as WONTFIX, please indicate if you do not wish to receive any future bugs upon new releases of the library.
