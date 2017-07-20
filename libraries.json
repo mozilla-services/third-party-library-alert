@@ -482,46 +482,6 @@
 		"current_version_re" : "raven-js\": \"([0-9\\.]+)\","
 	},
 	{
-		"title" : "image-operations",
-		"location" : "gfx/2d/",
-		"filing_info" : "",
-		"ignore" : "2017-06-06 18:26:58",
-		"ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
-		"most_recent_bug" : 1371689,
-
-		"latest_version_fetch_type" : "list",
-		"latest_version_fetch_location_base" : "https://chromium.googlesource.com/chromium/src.git/+log/master/skia/ext/",
-		"latest_version_fetch_location_list" : [
-			"image_operations.h",
-			"image_operations.cc",
-			"convolver.cc",
-			"convolver.h",
-			"convolver_SSE2.cc",
-			"convolver_SSE2.h"
-			],
-		"latest_version_re" : "<span class=\"CommitLog-time\" title=\"([^\"]+)\">",
-		"latest_version_date_format_string" : "%a %b %d %H:%M:%S %Y",
-		"latest_version_addition_info_re" : "<a href=\"\\/chromium\\/src\\.git\\/\\+\\/[a-f0-9]+\">([^<]+)<\\/a>",
-
-		#When we update these files for the first time (Bug 1371689) they will add a README we can parse to get the date
-		"current_version_fetch_type" : "hardcoded",
-		"current_version_fetch_location" : "2012-08-23 15:36",
-		"current_version_date_format_string" : "%Y-%m-%d %H:%M",
-		#"current_version_fetch_location_base" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/2d/",
-		#"current_version_fetch_location_list" : [
-		#	"image_operations.h",
-		#	"image_operations.cpp",
-		#	"convolver.cpp",
-		#	"convolver.h",
-		#	"convolverSSE2.cpp",
-		#	"convolverSSE2.h"
-		#	],
-		#"current_version_re" : "",
-
-		"compare_type" : "date",
-		"compare_date_lag" : 1
-	},
-	{
 		"title" : "fdlibm",
 		"location" : "modules/fdlibm",
 		"filing_info" : "1343924 Javascript Engine CC::bbouvier ni::arai",
