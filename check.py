@@ -90,7 +90,7 @@ def _fetch_html_re(fetch_type, fetch_location, fetch_ssl_verify, regular_express
 ################################################################################
 
 def get_mozilla_version(config):
-	if config['current_version_fetch_type'] == 'html_re':
+	if 'html_re' in config['current_version_fetch_type']:
 		current_version = _fetch_html_re(config['current_version_fetch_type'], 
 			config['current_version_fetch_location'],
 			config['current_version_fetch_ssl_verify'], 
