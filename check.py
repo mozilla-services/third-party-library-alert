@@ -258,8 +258,13 @@ def _compare_type_date(config):
 ################################################################################
 def read_json_file():
 	f = open("libraries.json")
-	almost_json = "".join(f.readlines())
-	almost_json = re.sub(r'#.+', '', almost_json)
+	lines = f.readlines()
+	almost_json = []
+	for l in lines:
+		if not l.strip().startswith("#"):
+			almost_json.append(l)
+
+	almost_json = "".join(almost_json)
 	try:
 		LIBRARIES = json.loads(almost_json)
 	except:

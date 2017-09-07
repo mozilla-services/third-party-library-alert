@@ -13,7 +13,8 @@
 
 # Remember:
 #  - if you use a \ in a regex, such as \s, it needs to be double escaped for JSON: \\s
-#  - All characters aftr a # will be removed, so don't put it inside a string!
+#  - If a # occurs at the beginning of a line (ignoring whitespace) that line will be removed
+#  - Trailing comments (sticking a # and then a comment at the end of a line) are not supported
 #  - Trailing commas at the end of objects and arrays are disallowed
 [
 	{
@@ -36,7 +37,8 @@
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://xiph.org/downloads/",
 		"latest_version_re" : "<td>libogg</td>\\s<td>([0-9.]+)</td>",
-		"latest_version_fetch_ssl_verify" : false, # SAN/SNI problems
+		# SAN/SNI problems
+		"latest_version_fetch_ssl_verify" : false,
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
@@ -86,7 +88,8 @@
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "http://git.tukaani.org/?p=xz-embedded.git;a=log;h=refs/heads/master",
 		"latest_version_re" : "<a class=\"title\" href=\"/\\?p=xz-embedded\\.git;a=commit;h=([a-f0-9A-F]{40})",
-		"latest_version_fetch_ssl_verify" : false, # SAN/SNI problems
+		# SAN/SNI problems
+		"latest_version_fetch_ssl_verify" : false,
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/xz-embedded/README.mozilla",
@@ -278,7 +281,8 @@
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://sourceware.org/libffi/",
 		"latest_version_re" : "<b>libffi-([0-9.]+)</b> was released",
-		"latest_version_fetch_ssl_verify" : false, # SAN/SNI problems
+		# SAN/SNI problems
+		"latest_version_fetch_ssl_verify" : false,
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
@@ -295,7 +299,8 @@
 		"latest_version_fetch_location" : "https://www.sqlite.org/chronology.html",
 		"latest_version_file_prefix_re" : "releaselog/[0-9_]+\\.html\">",
 		"latest_version_file_suffix_re" : "</a>",
-		# "latest_version_fetch_ssl_verify" : false, # certificate verify failed
+		# certificate verify failed
+		# "latest_version_fetch_ssl_verify" : false,
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/old-configure.in",
@@ -309,7 +314,8 @@
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://www.cairographics.org/releases/",
-		"latest_version_fetch_ssl_verify" : false, # SAN/SNI problems
+		# SAN/SNI problems
+		"latest_version_fetch_ssl_verify" : false,
 		"latest_version_re" : "LATEST-pixman-([0-9.]+)",
 
 		"current_version_fetch_type" : "html_re",
@@ -326,7 +332,8 @@
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://libav.org/download/",
 		"latest_version_re" : "<b>([0-9.]+)</b> was released on <i>",
-		"latest_version_fetch_ssl_verify" : false, # Site presents multiple chains and it confuses the old version of requests AFAICT
+		# Site presents multiple chains and it confuses the old version of requests AFAICT
+		"latest_version_fetch_ssl_verify" : false,
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libav/VERSION",
@@ -544,7 +551,7 @@
 			],
 		"latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
 		"latest_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
-		"latest_version_addition_info_re" : "<a href=\"/freebsd/freebsd/commit/[a-fA-F0-9]{40}\" class=\"message\" .+ title=\"([^\"]+)\">",
+		"latest_version_addition_info_re" : "<a href=\"/freebsd/freebsd/commit/[a-fA-F0-9]{40}#?d?i?f?f?-?[a-fA-F0-9]*\" class=\"message\" .+ title=\"([^\"]+)\">",
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
