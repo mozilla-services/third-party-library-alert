@@ -281,7 +281,8 @@ def fetch_and_compare(config):
 		status = _compare_type_version(config)
 		if status != OK and 'ignore' in config and config['latest_version'] == config['ignore']:
 			if 'ignore_until' in config:
-				if datetime.datetime.now() < config['ignore_until']:
+				ignore_until = datetime.datetime.strptime(config['ignore_until'], config['ignore_date_format_string'])
+				if datetime.datetime.now() < ignore_until:
 					should_ignore = True
 			else:
 				should_ignore = True
@@ -290,7 +291,8 @@ def fetch_and_compare(config):
 		status = _compare_type_equality(config)
 		if status != OK and 'ignore' in config and config['latest_version'] == config['ignore']:
 			if 'ignore_until' in config:
-				if datetime.datetime.now() < config['ignore_until']:
+				ignore_until = datetime.datetime.strptime(config['ignore_until'], config['ignore_date_format_string'])
+				if datetime.datetime.now() < ignore_until:
 					should_ignore = True
 			else:
 				should_ignore = True
@@ -301,7 +303,8 @@ def fetch_and_compare(config):
 			ignore_date = datetime.datetime.strptime(config['ignore'], config['ignore_date_format_string'])
 			if config['latest_version'] - ignore_date <= datetime.timedelta(days=config['compare_date_lag']):
 				if 'ignore_until' in config:
-					if datetime.datetime.now() < config['ignore_until']:
+					ignore_until = datetime.datetime.strptime(config['ignore_until'], config['ignore_date_format_string'])
+					if datetime.datetime.now() < ignore_until:
 						should_ignore = True
 				else:
 					should_ignore = True
