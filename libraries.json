@@ -122,7 +122,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "27036e33e86c9ce3b5087d55c18bf04964343c60",
+		"ignore" : "5b1af9a33545895ea12c52bf007f17914de19173",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
@@ -342,13 +342,14 @@
 		"current_version_re" : "([0-9\\.]+)"
 	},
 	{
+		# To ignore the first time, set ignore_until and ignore_date_format_string; to ignore the second time, comment out those and compare_type
 		"title" : "double-conversion",
 		"location" : "mfbt/double-conversion",
 		"filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
-		"ignore" : "2017-09-10",
+		"ignore" : "2017-09-15",
 		"most_recent_bug" : 1346853,
-		"ignore_date_format_string" : "%Y-%m-%d",
-		"ignore_until" : "2017-09-17",
+		#"ignore_date_format_string" : "%Y-%m-%d",
+		#"ignore_until" : "2017-09-17",
 		
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://github.com/google/double-conversion",
@@ -358,10 +359,10 @@
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/double-conversion/GIT-INFO",
 		"current_version_re" : "Date:\\s+[^\\s]+ ([0-9a-zA-Z: ]+) \\+*[0-9]*",
-		"current_version_date_format_string" : "%b %d %H:%M:%S %Y",
+		"current_version_date_format_string" : "%b %d %H:%M:%S %Y"
 		
-		"compare_type" : "date",
-		"compare_date_lag" : 0
+		#"compare_type" : "date",
+		#"compare_date_lag" : 0
 	},
 	{
 		"title" : "zlib",
@@ -437,8 +438,8 @@
 		"title" : "Codemirror",
 		"filing_info" : "Firefox: Developer Tools: Source Editor",
 		"location" : "devtools/client/sourceeditor/codemirror/",
-		"ignore" : "5.29.0",
-		"most_recent_bug" : 1393825,
+		"ignore" : "5.30.0",
+		"most_recent_bug" : 1402343,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/codemirror/CodeMirror/",
