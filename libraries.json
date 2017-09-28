@@ -234,9 +234,8 @@
 		"filing_info" : "Core:Audio/Video",
 
 		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "http://hg.code.sf.net/p/kissfft/code",
-		"latest_version_re" : "<td class=\"description\"><a href=\"/p/kissfft/code/rev/([0-9a-f]+)\"",
-
+		"latest_version_fetch_location" : "https://sourceforge.net/p/kissfft/code/ci/default/tree/",
+		"latest_version_re" : "Tree <a href=\"/p/kissfft/code/ci/([0-9a-f]{12})",
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/kiss_fft/README_MOZILLA",
