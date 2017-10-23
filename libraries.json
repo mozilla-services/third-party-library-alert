@@ -122,7 +122,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "5b1af9a33545895ea12c52bf007f17914de19173",
+		"ignore" : "8fa02df3c0591754958a50cc2896aafae319f3bc",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
@@ -395,8 +395,8 @@
 		"title" : "Harfbuzz",
 		"location" : "gfx/harfbuzz/",
 		"filing_info" : "Core:Graphics:Text CC:ryanvm",
-		"ignore" : "1.6.0",
-		"most_recent_bug" : 1408855,
+		"ignore" : "1.6.1",
+		"most_recent_bug" : 1411005,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/behdad/harfbuzz/",
@@ -437,8 +437,8 @@
 		"title" : "Codemirror",
 		"filing_info" : "Firefox: Developer Tools: Source Editor",
 		"location" : "devtools/client/sourceeditor/codemirror/",
-		"ignore" : "5.30.0",
-		"most_recent_bug" : 1402343,
+		"ignore" : "5.31.0",
+		"most_recent_bug" : 1411006,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/codemirror/CodeMirror/",
