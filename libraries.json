@@ -293,8 +293,8 @@
 		"title" : "sqlite",
 		"filing_info" : "Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug",
 		"location" : "db/sqlite3",
-		"ignore" : "3.20.0",
-		"most_recent_bug" : 1371364,
+		"ignore" : "3.21.0",
+		"most_recent_bug" : 1411417,
 
 		"latest_version_fetch_type" : "find_in_directory",
 		"latest_version_fetch_location" : "https://www.sqlite.org/chronology.html",
