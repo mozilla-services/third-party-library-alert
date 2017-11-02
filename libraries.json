@@ -50,8 +50,8 @@
 		"title" : "icu",
 		"location" : "intl/icu",
 		"filing_info" : " JavaScript:: Internationalization API",
-		"ignore" : "59.1",
-		"most_recent_bug" : 1353650,
+		"ignore" : "60",
+		"most_recent_bug" : 1405993,
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "http://site.icu-project.org/download/",
