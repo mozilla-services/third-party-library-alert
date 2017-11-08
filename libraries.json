@@ -35,6 +35,8 @@
 	{
 		"title" : "libogg",
 		"location" : "media/libogg/",
+		"ignore" : "1.3.3",
+		
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://xiph.org/downloads/",
