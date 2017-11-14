@@ -36,7 +36,7 @@
 		"title" : "libogg",
 		"location" : "media/libogg/",
 		"ignore" : "1.3.3",
-		
+
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://xiph.org/downloads/",
@@ -397,8 +397,8 @@
 		"title" : "Harfbuzz",
 		"location" : "gfx/harfbuzz/",
 		"filing_info" : "Core:Graphics:Text CC:ryanvm",
-		"ignore" : "1.6.3",
-		"most_recent_bug" : 1411005,
+		"ignore" : "1.7.0",
+		"most_recent_bug" : 1417131,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/behdad/harfbuzz/",
