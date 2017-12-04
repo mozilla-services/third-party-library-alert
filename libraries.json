@@ -509,7 +509,7 @@
 		"title" : "fdlibm",
 		"location" : "modules/fdlibm",
 		"filing_info" : "1343924 Javascript Engine CC::bbouvier ni::arai",
-		"ignore" : "2017-11-26 02:00:33",
+		"ignore" : "2017-12-03 01:56:03",
 		"ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
 		"most_recent_bug" : 1343924,
 
