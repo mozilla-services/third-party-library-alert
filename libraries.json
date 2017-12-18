@@ -52,8 +52,8 @@
 		"title" : "icu",
 		"location" : "intl/icu",
 		"filing_info" : " JavaScript:: Internationalization API",
-		"ignore" : "60",
-		"most_recent_bug" : 1405993,
+		"ignore" : "60.2",
+		"most_recent_bug" : 1415827,
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "http://site.icu-project.org/download/",
@@ -124,7 +124,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "12c904a97c81c3ef4cab0fc8fb1f0485b4ec4e8c",
+		"ignore" : "d94a4867bf8be91e4c0fa8b7a4133ba060fe524f",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
@@ -480,9 +480,9 @@
 	{
 		"title" : "libjpeg-turbo",
 		"location" : "media/libjpeg",
-		"ignore" : "1.5.2",
+		"ignore" : "1.5.3",
 		"filing_info" : "Core::ImageLib CC:ryanvm",
-		"most_recent_bug" : 1379663,
+		"most_recent_bug" : 1425835,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/libjpeg-turbo/libjpeg-turbo",
@@ -495,7 +495,7 @@
 		"title" : "raven-js",
 		"location" : "https://github.com/mozilla-services/screenshots",
 		"filing_info" : "https://github.com/mozilla-services/screenshots/issues",
-		"ignore" : "3.20.1",
+		"ignore" : "3.21.0",
 		"most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/3651",
 
 		"latest_version_fetch_type" : "github_rss",

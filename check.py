@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# How to run locally in docker in a way that matches TaskCluster:
+# docker run --rm ubuntu:14.04 bash -c "apt-get update && apt-get install -y python python-requests python-feedparser git && cd /tmp && git clone https://github.com/mozilla-services/third-party-library-alert.git && cd third-party-library-alert && ./check.py"
+
 import os
 import re
 import sys
