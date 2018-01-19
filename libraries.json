@@ -347,7 +347,7 @@
 		"title" : "double-conversion",
 		"location" : "mfbt/double-conversion",
 		"filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
-		"ignore" : "2017-01-17",
+		"ignore" : "2018-01-17",
 		"most_recent_bug" : 1346853,
 		#"ignore_date_format_string" : "%Y-%m-%d",
 		#"ignore_until" : "2017-09-17",
