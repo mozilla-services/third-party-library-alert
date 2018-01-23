@@ -124,7 +124,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "50f9e618fa4bcb0561622fd709bee5da922b0fd4",
+		"ignore" : "09db0c4ce2008008f73b247f1a5b64cfbb29b72e",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
@@ -295,7 +295,7 @@
 		"title" : "sqlite",
 		"filing_info" : "Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug",
 		"location" : "db/sqlite3",
-		"ignore" : "3.21.0",
+		"ignore" : "3.22.0",
 		"most_recent_bug" : 1411417,
 
 		"latest_version_fetch_type" : "find_in_directory",
@@ -381,7 +381,7 @@
 		"title" : "skia",
 		"filing_info" : "Core:Graphics blocks:1210886",
 		"location" : "gfx/skia",
-		"ignore" : "64",
+		"ignore" : "65",
 		"most_recent_bug" : 1368720,
 
 		"latest_version_fetch_type" : "html_re",
