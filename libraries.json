@@ -124,7 +124,7 @@
 		"title" : "libyuv",
 		"location" : "media/libyuv/",
 		"filing_info" : "Blocks: 1284800 Core:Graphics",
-		"ignore" : "09db0c4ce2008008f73b247f1a5b64cfbb29b72e",
+		"ignore" : "92e22cf5b66173d5d5056751ca62bc2254e4ff86",
 		"most_recent_bug" : 1346291,
 
 		"latest_version_fetch_type" : "html_re_base64",
@@ -221,6 +221,8 @@
 	{
 		"title" : "libvpx",
 		"location" : "media/libvpx",
+		"ignore" : "1.7.0",
+		"most_recent_bug" : 1433158,
 
 		"latest_version_fetch_type" : "html_re",
 		"latest_version_fetch_location" : "https://chromium.googlesource.com/webm/libvpx/+refs",
