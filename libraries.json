@@ -441,8 +441,8 @@
 		"title" : "Codemirror",
 		"filing_info" : "Firefox: Developer Tools: Source Editor",
 		"location" : "devtools/client/sourceeditor/codemirror/",
-		"ignore" : "5.33.0",
-		"most_recent_bug" : 1420499,
+		"ignore" : "5.34.0",
+		"most_recent_bug" : 1434295,
 
 		"latest_version_fetch_type" : "github_rss",
 		"latest_version_fetch_location" : "https://github.com/codemirror/CodeMirror/",
