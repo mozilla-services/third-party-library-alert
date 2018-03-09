@@ -388,7 +388,7 @@
 		"title" : "skia",
 		"filing_info" : "Core:Graphics blocks:1210886",
 		"location" : "gfx/skia",
-		"ignore" : "65",
+		"ignore" : "66",
 		"most_recent_bug" : 1368720,
 
 		"latest_version_fetch_type" : "html_re",
