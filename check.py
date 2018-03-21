@@ -8,6 +8,7 @@ import re
 import sys
 import json
 import base64
+import argparse
 import datetime
 import requests
 import traceback
@@ -55,6 +56,9 @@ def validate_config(config):
 
 	if 'compare_type' not in config:
 		config['compare_type'] = 'version'
+
+	if 'library_ignored' not in config:
+		config['library_ignored'] = False
 
 	if 'print_additional_library_info' not in config:
 		config['print_additional_library_info'] = ''
@@ -365,26 +369,32 @@ I fetched the latest version of the library from %(latest_version_fetch_location
 """
 
 if __name__ == "__main__":
-	verbose = False
-	if '-v' in sys.argv:
-		verbose = True
-
-	if len(sys.argv) > 1 and sys.argv[1] != '-v':
-		verbose = True
-		libraries = sys.argv[1:]
-	else:
-		libraries = None
+	parser = argparse.ArgumentParser(description='Scan Firefox source code for out of date third party libraries.')
+	parser.add_argument('-v', action="store_true", required=False, help='Verbose')
+	parser.add_argument('--list', action="store_true", required=False, help='Check the script\'s database against ThirdPartyPaths.txt')
+	parser.add_argument('libraries', nargs='*', metavar='[libraries]', type=str, help='Libraries to scan (blank for "all"')
+	args = parser.parse_args()
 
 	return_code = OK
 
 	LIBRARIES = read_json_file()
 
+	if args.list:
+		allThirdPartyLibraries = set(requests.get("https://hg.mozilla.org/mozilla-central/raw-file/tip/tools/rewriting/ThirdPartyPaths.txt").text.split("\n"))
+		knownThirdPartyLibraries = set([l['location'] for l in LIBRARIES])
+		missingThirdPartyLibraries = allThirdPartyLibraries - knownThirdPartyLibraries
+		if not missingThirdPartyLibraries:
+			print "No Libraries missing!"
+		for m in sorted(missingThirdPartyLibraries):
+			print m
+		sys.exit(0)
+
 	for l in LIBRARIES:
-		if libraries and l['title'] not in libraries:
+		if args.libraries and l['title'] not in args.libraries:
 			continue
 
 		config = l
-		config['verbose'] = verbose
+		config['verbose'] = args.v or args.libraries
 
 		config = validate_config(config)
 
