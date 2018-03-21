@@ -30,6 +30,46 @@
 		"library_ignored" : "Mozilla is upstream"
 	},
 	{
+		"title" : "NSS",
+		"location" : "security/nss/",
+		"library_ignored" : "Mozilla is upstream"
+	},
+	{
+		"title" : "nsprpub",
+		"location" : "nsprpub/",
+		"library_ignored" : "Mozilla is upstream"
+	},
+	{
+		"title" : "libmar",
+		"location" : "modules/libmar/",
+		"library_ignored" : "Mozilla is upstream"
+	},
+	{
+		"title" : "gmock",
+		"location" : "testing/gtest/gmock/",
+		"library_ignored" : "Testing library"
+	},
+	{
+		"title" : "gtest",
+		"location" : "testing/gtest/gtest/",
+		"library_ignored" : "Testing library"
+	},
+	{
+		"title" : "Talos Libraries",
+		"location" : "testing/talos/talos/*",
+		"library_ignored" : "Talos Performance Testing libraries"
+	},
+	{
+		"title" : "Python Libraries",
+		"location" : "third_party/python/*",
+		"library_ignored" : "Python Libraries"
+	},
+	{
+		"title" : "libfuzzer",
+		"location" : "tools/fuzzing/libfuzzer/",
+		"library_ignored" : "Fuzzing Library"
+	},
+	{
 		"title" : "lz4",
 		"location" : "mfbt/lz4/",
 		"ignore" : "1.8.1.2",
@@ -91,10 +131,6 @@
 
 		"compare_type" : "equality"
 	},
-	# {
-		#  'title" : "angle",
-		#  Currently we ignore Angle because it's in constant development and we have a weird fork of it
-	# },
 	{
 		"title" : "xz-embedded",
 		"location" : "modules/xz-embedded/",
@@ -195,7 +231,7 @@
 	},
 	{
 		"title" : "SRTP",
-		"location" : "netwerk/srtp/",
+		"location" : "netwerk/srtp/src/",
 		"ignore" : "1.6.0", 
 		"most_recent_bug" : 1230759,
 
@@ -296,7 +332,7 @@
 	{
 		"title" : "libffi",
 		"filing_info" : "CC:ryanvm Core:js-ctypes",
-		"location" : "js/src/ctypes/",
+		"location" : "js/src/ctypes/libffi/",
 		"ignore" : "3.2.1", 
 		"most_recent_bug" : 1339534,
 
@@ -313,7 +349,7 @@
 	{
 		"title" : "sqlite",
 		"filing_info" : "Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug",
-		"location" : "db/sqlite3/",
+		"location" : "db/sqlite3/src/",
 		"ignore" : "3.22.0",
 		"most_recent_bug" : 1411417,
 
@@ -364,7 +400,7 @@
 	{
 		# To ignore the first time, set ignore_until and ignore_date_format_string; to ignore the second time, comment out those and compare_type
 		"title" : "double-conversion",
-		"location" : "mfbt/double-conversion/",
+		"location" : "mfbt/double-conversion/double-conversion/",
 		"filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
 		"ignore" : "2018-03-02",
 		"most_recent_bug" : 1346853,
@@ -442,7 +478,7 @@
 	},
 	{
 		"title" : "Hunspell",
-		"location" : "extensions/spellcheck/hunspell/",
+		"location" : "extensions/spellcheck/hunspell/src/",
 		"filing_info" : "Core::Spelling Checker CC:ryanvm",
 		"ignore" : "1.6.2",
 		"most_recent_bug" : 1397867,

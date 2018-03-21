@@ -380,15 +380,28 @@ if __name__ == "__main__":
 	LIBRARIES = read_json_file()
 
 	if args.list:
+		# Set subtraction on the libraries I know about
 		allThirdPartyLibraries = set(requests.get("https://hg.mozilla.org/mozilla-central/raw-file/tip/tools/rewriting/ThirdPartyPaths.txt").text.split("\n"))
 		knownThirdPartyLibraries = set([l['location'] for l in LIBRARIES])
 		missingThirdPartyLibraries = allThirdPartyLibraries - knownThirdPartyLibraries
+
+		# Also find and then subtract out any library whose path is a part of/a/path/like/this/*
+		libraryPaths = [l['location'][:-1] for l in LIBRARIES if l['location'].endswith('*')]
+		subtractAdditional = set()
+		for m in missingThirdPartyLibraries:
+			for l in libraryPaths:
+				if m.startswith(l):
+					subtractAdditional.add(m)
+		missingThirdPartyLibraries = missingThirdPartyLibraries - subtractAdditional
+
+		# Okay, now print.
 		if not missingThirdPartyLibraries:
 			print "No Libraries missing!"
 		for m in sorted(missingThirdPartyLibraries):
 			print m
 		sys.exit(0)
 
+	# Normal operation
 	for l in LIBRARIES:
 		if args.libraries and l['title'] not in args.libraries:
 			continue
