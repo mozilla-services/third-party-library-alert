@@ -199,6 +199,11 @@ def _latest_version_list(config):
 def get_latest_version(config):
 	if config['latest_version_fetch_type'] == 'github_rss':
 		latest_version = _latest_version_github_rss(config)
+	elif config['latest_version_fetch_type'] == 'github_hash':
+		latest_version = _fetch_html_re('html_re',
+			config['latest_version_fetch_location'] + "/commits/master",
+			True,
+			'data-clipboard-text="([a-fA-F0-9]{40})"')
 	elif config['latest_version_fetch_type'] == 'hardcoded':
 		latest_version = config['latest_version_fetch_location']
 	elif config['latest_version_fetch_type'] == 'list':
