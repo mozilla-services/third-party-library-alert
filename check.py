@@ -35,6 +35,12 @@ AHEAD = 2
 ################################################################################
 
 def validate_config(config):
+	if 'library_ignored' not in config:
+		config['library_ignored'] = False
+	else:
+		# If we're ignoring this library, we don't need the other checks
+		return config
+
 	if config['latest_version_fetch_type'] == 'github_rss' and \
 	   not config['latest_version_fetch_location'].endswith('/'):
 		config['latest_version_fetch_location'] += '/'
@@ -56,9 +62,6 @@ def validate_config(config):
 
 	if 'compare_type' not in config:
 		config['compare_type'] = 'version'
-
-	if 'library_ignored' not in config:
-		config['library_ignored'] = False
 
 	if 'print_additional_library_info' not in config:
 		config['print_additional_library_info'] = ''
@@ -410,6 +413,9 @@ if __name__ == "__main__":
 		config['verbose'] = args.v or args.libraries
 
 		config = validate_config(config)
+
+		if l['library_ignored']:
+			continue
 
 		if config['verbose']:
 			print "Examining", config['title'], "(" + config['location'] + ")"
