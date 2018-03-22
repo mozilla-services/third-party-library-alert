@@ -10,6 +10,16 @@
 		"library_ignored" : "Upstream abandonded"
 	},
 	{
+		"title" : "ycbcr",
+		"location" : "gfx/ycbcr/",
+		"library_ignored" : "Upstream abandonded"
+	},
+	{
+		"title" : "qcms",
+		"location" : "gfx/qcms/",
+		"library_ignored" : "Heavy-Forked from lcms in 2009"
+	},
+	{
 		"title" : "libtheora",
 		"location" : "media/libtheora/",
 		"library_ignored" : "Maintained by Mozilla employees"
@@ -48,6 +58,11 @@
 		"title" : "libmar",
 		"location" : "modules/libmar/",
 		"library_ignored" : "Mozilla's Library"
+	},
+	{
+		"title" : "wrench",
+		"location" : "gfx/wrench/",
+		"library_ignored" : "Testing library"
 	},
 	{
 		"title" : "gmock",
