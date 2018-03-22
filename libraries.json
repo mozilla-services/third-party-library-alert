@@ -10,14 +10,19 @@
 		"library_ignored" : "Upstream abandonded"
 	},
 	{
+		"title" : "libtheora",
+		"location" : "media/libtheora/",
+		"library_ignored" : "Maintained by Mozilla employees"
+	},
+	{
 		"title" : "libnestegg",
 		"location" : "media/libnestegg/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Maintained by Mozilla employees"
 	},
 	{
 		"title" : "libpng",
 		"location" : "media/libpng/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Maintained by Mozilla employees"
 	},
 	{
 		"title" : "Blink Web Audio",
@@ -27,22 +32,22 @@
 	{
 		"title" : "EmojiOne",
 		"location" : "browser/fonts/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Mozilla's Library"
 	},
 	{
 		"title" : "NSS",
 		"location" : "security/nss/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Mozilla's Library"
 	},
 	{
 		"title" : "nsprpub",
 		"location" : "nsprpub/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Mozilla's Library"
 	},
 	{
 		"title" : "libmar",
 		"location" : "modules/libmar/",
-		"library_ignored" : "Mozilla is upstream"
+		"library_ignored" : "Mozilla's Library"
 	},
 	{
 		"title" : "gmock",
