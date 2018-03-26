@@ -589,7 +589,7 @@
 	{
 		"title" : "libjpeg-turbo",
 		"location" : "media/libjpeg/",
-		"ignore" : "1.5.3",
+		"ignore" : "1.5.90",
 		"filing_info" : "Core::ImageLib CC:ryanvm",
 		"most_recent_bug" : 1425835,
 
@@ -604,7 +604,7 @@
 		"title" : "raven-js",
 		"location" : "https://github.com/mozilla-services/screenshots/",
 		"filing_info" : "https://github.com/mozilla-services/screenshots/issues",
-		"ignore" : "3.23.3",
+		"ignore" : "3.24.0",
 		"most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/3651",
 
 		"latest_version_fetch_type" : "github_rss",
