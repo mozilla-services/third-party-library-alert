@@ -226,7 +226,7 @@
 		"title" : "pdfium",
 		"location" : "modules/pdfium/",
 		"filing_info" : "",
-		"ignore" : "3ae75c2f2e5759fcf8218e59fa380c26b98aa6b6",
+		"ignore" : "5098b252848734ac69e0851f7bd116d93311a57e",
 		"most_recent_bug" : 1407027,
 
 		"latest_version_fetch_type" : "html_re_base64",
