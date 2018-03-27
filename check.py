@@ -203,7 +203,7 @@ def get_latest_version(config):
 		latest_version = _fetch_html_re('html_re',
 			config['latest_version_fetch_location'] + "/commits/master",
 			True,
-			'data-clipboard-text="([a-fA-F0-9]{40})"')
+			'([a-fA-F0-9]{40})" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>')
 	elif config['latest_version_fetch_type'] == 'hardcoded':
 		latest_version = config['latest_version_fetch_location']
 	elif config['latest_version_fetch_type'] == 'list':
