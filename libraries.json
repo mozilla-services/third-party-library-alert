@@ -261,7 +261,7 @@
 		"title" : "brotli",
 		"location" : "modules/brotli/",
 		"filing_info" : "(When brotli upgrades, see if the current dev branch is master or v0.5. Fix the mozilla update.sh script to output the version (like in 1341895).)",
-		"ignore" : "1.0.3",
+		"ignore" : "1.0.4",
 		"most_recent_bug" : 1443164,
 
 		"latest_version_fetch_type" : "github_rss",
@@ -456,15 +456,15 @@
 		"title" : "double-conversion",
 		"location" : "mfbt/double-conversion/double-conversion/",
 		"filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
-		"ignore" : "2018-03-02",
+		"ignore" : "2018-04-10",
 		"most_recent_bug" : 1346853,
 		#"ignore_date_format_string" : "%Y-%m-%d",
 		#"ignore_until" : "2017-09-17",
 		
 		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://github.com/google/double-conversion",
+		"latest_version_fetch_location" : "https://github.com/google/double-conversion/commits/master",
 		"latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)T",
-		"latest_version_date_format_string" : "%Y-%m-%d",
+		"latest_version_date_format_string" : "%Y-%m-%dT",
 
 		"current_version_fetch_type" : "html_re",
 		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/double-conversion/GIT-INFO",
