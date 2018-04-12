@@ -95,7 +95,7 @@ def _fetch_html_re(fetch_type, fetch_location, fetch_ssl_verify, regular_express
 		matched_text = m.groups(0)[0]
 		return matched_text 
 	else:
-		raise Exception(u"Could not match the regular expression '" + regular_expression + u"' in the text\n\n" + searchtext)
+		raise Exception(u"Could not match the regular expression '" + regular_expression + u"' in the text\n\n")
 
 ################################################################################
 
