@@ -193,7 +193,7 @@
 	{
 		"title" : "woff2",
 		"location" : "modules/woff2/",
-		"ignore" : "5e5f2cf20d5f9d3373a2d8b4905105f80646c014",
+		"ignore" : "a0d0ed7da27b708c0a4e96ad7a998bddc933c06e",
 
 		"latest_version_fetch_type" : "github_hash",
 		"latest_version_fetch_location" : "https://github.com/google/woff2",
