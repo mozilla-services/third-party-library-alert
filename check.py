@@ -64,9 +64,8 @@ def validate_config(config):
         )
     ):
         raise Exception(
-            "current_version_fetch_location ("
-            + config["current_version_fetch_location"]
-            + ") does not appear to be a raw hg.mozilla link."
+            "current_version_fetch_location (%s) does not appear "
+            "to be a raw hg.mozilla link." % config["current_version_fetch_location"]
         )
 
     if "filing_info" not in config:
@@ -123,11 +122,8 @@ def _fetch_html_re(fetch_type, fetch_location, fetch_ssl_verify, regular_express
         return matched_text
     else:
         raise Exception(
-            u"Could not match the regular expression '"
-            + regular_expression
-            + u"' in the text at "
-            + fetch_location
-            + "\n\n"
+            u"Could not match the regular expression '%s' in the text at %s\n\n"
+            % (regular_expression, fetch_location)
         )
 
 
@@ -148,8 +144,8 @@ def get_mozilla_version(config):
         raise Exception("List not implemented for Mozilla")
     else:
         raise Exception(
-            "Received an unknown current_version_fetch_type: "
-            + str(config["current_version_fetch_type"])
+            "Received an unknown current_version_fetch_type: %s"
+            % config["current_version_fetch_type"]
         )
 
     if "current_version_post_alter" in config:
@@ -206,10 +202,8 @@ def _latest_version_directory_crawl(config):
         return str(max_ver)
     else:
         raise Exception(
-            "Could not match the regular expression '"
-            + str(regex)
-            + "' in the text\n\n"
-            + str(t.text)
+            "Could not match the regular expression '%s' in the text\n\n%s"
+            % (regex, t.text)
         )
 
 
@@ -263,14 +257,15 @@ def _latest_version_list(config):
                 if "print_additional_library_info" not in config:
                     config["print_additional_library_info"] = ""
                 config["print_additional_library_info"] += (
-                    "\n-----------------------\nMost Recent Commit Message for "
-                    + i
-                    + ":\n"
-                    + _fetch_html_re(
-                        "html_re",
-                        config["latest_version_fetch_location_base"] + i,
-                        config["latest_version_fetch_ssl_verify"],
-                        config["latest_version_addition_info_re"],
+                    "\n-----------------------\nMost Recent Commit Message for %s:\n%s"
+                    % (
+                        i,
+                        _fetch_html_re(
+                            "html_re",
+                            config["latest_version_fetch_location_base"] + i,
+                            config["latest_version_fetch_ssl_verify"],
+                            config["latest_version_addition_info_re"],
+                        ),
                     )
                 )
     return newest_latest_version
@@ -366,9 +361,8 @@ def _compare_type_date(config):
     else:
         if config["latest_version"] != config["current_version"] and config["verbose"]:
             print(
-                "\tIgnoring a new commit that is not more than",
-                config["compare_date_lag"],
-                "days old",
+                "\tIgnoring a new commit that is not more than %s days old"
+                % config["compare_date_lag"]
             )
         status = OK
     return status
@@ -465,11 +459,8 @@ def fetch_and_compare(config):
             else:
                 if config["verbose"]:
                     print(
-                        "\tCurrent version ("
-                        + str(config["current_version"])
-                        + ") is AHEAD of latest ("
-                        + str(config["latest_version"])
-                        + ")?!?!"
+                        "\tCurrent version (%s) is AHEAD latest (%s)?!?!"
+                        % (config["current_version"], config["latest_version"])
                     )
 
                 config = munge_config_for_printing(config)
@@ -478,11 +469,8 @@ def fetch_and_compare(config):
         else:
             if config["verbose"]:
                 print(
-                    "\tCurrent version ("
-                    + str(config["current_version"])
-                    + ") is behind latest ("
-                    + str(config["latest_version"])
-                    + ")"
+                    "\tCurrent version (%s) is behind latest (%s)"
+                    % (config["current_version"], config["latest_version"])
                 )
 
             config = munge_config_for_printing(config)
