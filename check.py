@@ -10,16 +10,17 @@
 
 from __future__ import print_function
 
+import argparse
+import base64
+import datetime
+import json
 import re
 import sys
-import json
-import base64
-import argparse
-import datetime
-import requests
 import traceback
-import feedparser
 from distutils.version import LooseVersion
+
+import feedparser
+import requests
 
 # Sometimes we don't do certificate validation because we're naughty
 # Actually, the problem is that Ubuntu 14.04 (which is what TaskCluster uses)
