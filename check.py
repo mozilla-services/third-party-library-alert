@@ -318,12 +318,15 @@ def get_latest_version(config):
 
 ################################################################################
 def _compare_type_version(config):
+    current_version = config["current_version"]
     if "." not in config["current_version"]:
-        current_version = config["current_version"] + ".0"
-    if "." not in config["latest_version"]:
-        latest_version = config["latest_version"] + ".0"
-    current_version = LooseVersion(config["current_version"])
-    latest_version = LooseVersion(config["latest_version"])
+        current_version = current_version + ".0"
+    current_version = LooseVersion(current_version)
+
+    latest_version = config["latest_version"]
+    if "." not in latest_version:
+        latest_version = latest_version + ".0"
+    latest_version = LooseVersion(latest_version)
 
     if latest_version < current_version:
         return AHEAD
