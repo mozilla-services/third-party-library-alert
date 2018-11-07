@@ -3,6 +3,8 @@
 # How to run locally in docker in a way that matches TaskCluster:
 # docker run --rm ubuntu:14.04 bash -c "apt-get update && apt-get install -y python python-requests python-feedparser git && cd /tmp && git clone https://github.com/mozilla-services/third-party-library-alert.git && cd third-party-library-alert && ./check.py"
 
+from __future__ import print_function
+
 import os
 import re
 import sys
@@ -116,7 +118,7 @@ def get_mozilla_version(config):
 		current_version = config['current_version_post_alter'](current_version)
 
 	if config['verbose']:
-		print "\tFound mozilla version", current_version
+		print("\tFound mozilla version", current_version)
 
 	return current_version
 	
@@ -224,7 +226,7 @@ def get_latest_version(config):
 		latest_version = config['latest_version_post_alter'](latest_version)
 
 	if config['verbose']:
-		print "\tFound version", latest_version
+		print("\tFound version", latest_version)
 
 	return latest_version
 
@@ -241,7 +243,7 @@ def _compare_type_version(config):
 		return AHEAD
 	elif latest_version == current_version:
 		if config['verbose']:
-			print "\tUp to date"
+			print("\tUp to date")
 		return OK
 	else:
 		return UPDATE
@@ -251,7 +253,7 @@ def _compare_type_equality(config):
 		return UPDATE
 	elif config['latest_version'] == config['current_version']:
 		if config['verbose']:
-			print "\tUp to date"
+			print("\tUp to date")
 		return OK
 	else:
 		raise Exception("Uh....?")
@@ -266,7 +268,7 @@ def _compare_type_date(config):
 		status = UPDATE
 	else:
 		if config['latest_version'] != config['current_version'] and config['verbose']:
-			print"\tIgnoring a new commit that is not more than", config['compare_date_lag'], "days old"
+			print("\tIgnoring a new commit that is not more than", config['compare_date_lag'], "days old")
 		status = OK
 	return status
 
@@ -283,8 +285,8 @@ def read_json_file():
 	try:
 		LIBRARIES = json.loads(almost_json)
 	except:
-		print "Error decoding json:"
-		print almost_json
+		print("Error decoding json:")
+		print(almost_json)
 	return LIBRARIES
 
 def fetch_and_compare(config):
@@ -332,26 +334,26 @@ def fetch_and_compare(config):
 			status = OK
 			#We have an open bug for this already
 			if config['verbose']:
-				print"\tIgnoring outdated version, known bug"
+				print("\tIgnoring outdated version, known bug")
 
 		elif status == AHEAD:
 			if 'allows_ahead' in config and config['allows_ahead']:
 				status = OK
 				if config['verbose']:
-					print"\tIgnoring ahead version, config allows it"
+					print("\tIgnoring ahead version, config allows it")
 			else:
 				if config['verbose']:
-					print "\tCurrent version (" + str(config['current_version']) + ") is AHEAD of latest (" + str(config['latest_version']) + ")?!?!"
+					print("\tCurrent version (" + str(config['current_version']) + ") is AHEAD of latest (" + str(config['latest_version']) + ")?!?!")
 				
 				config = munge_config_for_printing(config)
-				print bug_message % config
+				print(bug_message % config)
 		
 		else:
 			if config['verbose']:
-				print "\tCurrent version (" + str(config['current_version']) + ") is behind latest (" + str(config['latest_version']) + ")"
+				print("\tCurrent version (" + str(config['current_version']) + ") is behind latest (" + str(config['latest_version']) + ")")
 
 			config = munge_config_for_printing(config)
-			print bug_message % config
+			print(bug_message % config)
 	
 	config['status'] = status
 
@@ -404,9 +406,9 @@ if __name__ == "__main__":
 
 		# Okay, now print.
 		if not missingThirdPartyLibraries:
-			print "No Libraries missing!"
+			print("No Libraries missing!")
 		for m in sorted(missingThirdPartyLibraries):
-			print m
+			print(m)
 		sys.exit(0)
 
 	# Normal operation
@@ -423,7 +425,7 @@ if __name__ == "__main__":
 			continue
 
 		if config['verbose']:
-			print "Examining", config['title'], "(" + config['location'] + ")"
+			print("Examining", config['title'], "(" + config['location'] + ")")
 
 		try:
 			result = fetch_and_compare(config)
@@ -433,7 +435,7 @@ if __name__ == "__main__":
 
 		except Exception as e:
 			return_code = ERROR
-			print "\tCaught an exception processing", config['title']
-			print traceback.format_exc()
+			print("\tCaught an exception processing", config['title'])
+			print(traceback.format_exc())
 
 	sys.exit(return_code)
