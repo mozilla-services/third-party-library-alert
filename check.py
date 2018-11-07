@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
 # How to run locally in docker in a way that matches TaskCluster:
-# docker run --rm ubuntu:14.04 bash -c "apt-get update && apt-get install -y python python-requests python-feedparser git && cd /tmp && git clone https://github.com/mozilla-services/third-party-library-alert.git && cd third-party-library-alert && ./check.py"
+# docker run --rm ubuntu:14.04 bash -c "apt-get update && \
+#   apt-get install -y python python-requests python-feedparser git && \
+#   cd /tmp && \
+#   git clone https://github.com/mozilla-services/third-party-library-alert.git && \
+#   cd third-party-library-alert && \
+#   ./check.py"
 
 from __future__ import print_function
 
-import os
 import re
 import sys
 import json
@@ -25,7 +29,7 @@ try:
     from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-except:
+except ImportError:
     pass
 
 
@@ -210,7 +214,8 @@ def _latest_version_directory_crawl(config):
 
 
 def _latest_version_list(config):
-    # Find all files with a commit newer than the current version date, but put the 'latest' version as the most recent
+    # Find all files with a commit newer than the current version date, but put
+    # the 'latest' version as the most recent
     min_value = datetime.datetime.strptime("2000-01-01T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
     newest_latest_version = min_value
 
@@ -377,11 +382,11 @@ def read_json_file():
 
     almost_json = "".join(almost_json)
     try:
-        LIBRARIES = json.loads(almost_json)
-    except:
+        return json.loads(almost_json)
+    except ValueError:
         print("Error decoding json:")
         print(almost_json)
-    return LIBRARIES
+        return None
 
 
 def fetch_and_compare(config):
@@ -504,7 +509,8 @@ I fetched the latest version of the library from %(latest_version_fetch_location
 =========================
 """
 
-if __name__ == "__main__":
+
+def main():
     parser = argparse.ArgumentParser(
         description="Scan Firefox source code for out of date third party libraries."
     )
@@ -519,45 +525,49 @@ if __name__ == "__main__":
         "libraries",
         nargs="*",
         metavar="[libraries]",
-        type=str,
-        help='Libraries to scan (blank for "all"',
+        help='Libraries to scan (blank for "all")',
     )
     args = parser.parse_args()
 
     return_code = OK
 
-    LIBRARIES = read_json_file()
+    libraries = read_json_file()
 
     if args.list:
         # Set subtraction on the libraries I know about
-        allThirdPartyLibraries = set(
+        all_third_party_libraries = set(
             requests.get(
                 "https://hg.mozilla.org/mozilla-central/raw-file/tip/tools/rewriting/ThirdPartyPaths.txt"
             ).text.split("\n")
         )
-        knownThirdPartyLibraries = set([l["location"] for l in LIBRARIES])
-        missingThirdPartyLibraries = allThirdPartyLibraries - knownThirdPartyLibraries
+        known_third_party_libraries = set([l["location"] for l in libraries])
+        missing_third_party_libraries = (
+            all_third_party_libraries - known_third_party_libraries
+        )
 
-        # Also find and then subtract out any library whose path is a part of/a/path/like/this/*
-        libraryPaths = [
-            l["location"][:-1] for l in LIBRARIES if l["location"].endswith("*")
+        # Also find and then subtract out any library whose path is a
+        # part of/a/path/like/this/*
+        library_paths = [
+            l["location"][:-1] for l in libraries if l["location"].endswith("*")
         ]
-        subtractAdditional = set()
-        for m in missingThirdPartyLibraries:
-            for l in libraryPaths:
+        subtract_additional = set()
+        for m in missing_third_party_libraries:
+            for l in library_paths:
                 if m.startswith(l):
-                    subtractAdditional.add(m)
-        missingThirdPartyLibraries = missingThirdPartyLibraries - subtractAdditional
+                    subtract_additional.add(m)
+        missing_third_party_libraries = (
+            missing_third_party_libraries - subtract_additional
+        )
 
         # Okay, now print.
-        if not missingThirdPartyLibraries:
+        if not missing_third_party_libraries:
             print("No Libraries missing!")
-        for m in sorted(missingThirdPartyLibraries):
+        for m in sorted(missing_third_party_libraries):
             print(m)
         sys.exit(0)
 
         # Normal operation
-    for l in LIBRARIES:
+    for l in libraries:
         if args.libraries and l["title"] not in args.libraries:
             continue
 
@@ -578,9 +588,13 @@ if __name__ == "__main__":
             if result["status"] != OK:
                 return_code = result["status"]
 
-        except Exception as e:
+        except Exception:
             return_code = ERROR
             print("\tCaught an exception processing", config["title"])
             print(traceback.format_exc())
 
     sys.exit(return_code)
+
+
+if __name__ == "__main__":
+    main()
