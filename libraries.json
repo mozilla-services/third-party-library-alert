@@ -286,7 +286,7 @@
     },
     {
         "title" : "openvr",
-        "location" : "gfx/vr/openvr/",
+        "location" : "gfx/vr/service/openvr/",
         "ignore" : "1.0.15",
         "most_recent_bug" : 1423731,
 
@@ -294,7 +294,7 @@
         "latest_version_fetch_location" : "https://github.com/ValveSoftware/openvr",
 
         "current_version_fetch_type" : "html_re",
-        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/vr/openvr/README.mozilla",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/vr/service/openvr/README.mozilla",
         "current_version_re" : "version ([0-9\\.]+)"
     },
     {
