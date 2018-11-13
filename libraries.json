@@ -4,663 +4,621 @@
 #  - Trailing comments (sticking a # and then a comment at the end of a line) are not supported
 #  - Trailing commas at the end of objects and arrays are disallowed
 [
-	{
-		"title" : "libmkv",
-		"location" : "media/libmkv/",
-		"library_ignored" : "Upstream abandonded"
-	},
-	{
-		"title" : "ycbcr",
-		"location" : "gfx/ycbcr/",
-		"library_ignored" : "Upstream abandonded"
-	},
-	{
-		"title" : "qcms",
-		"location" : "gfx/qcms/",
-		"library_ignored" : "Heavy-Forked from lcms in 2009"
-	},
-	{
-		"title" : "libtheora",
-		"location" : "media/libtheora/",
-		"library_ignored" : "Maintained by Mozilla employees"
-	},
-	{
-		"title" : "libnestegg",
-		"location" : "media/libnestegg/",
-		"library_ignored" : "Maintained by Mozilla employees"
-	},
-	{
-		"title" : "libpng",
-		"location" : "media/libpng/",
-		"library_ignored" : "Maintained by Mozilla employees"
-	},
-	{
-		"title" : "Blink Web Audio",
-		"location" : "dom/media/webaudio/blink/",
-		"library_ignored" : "Heavy fork of https://chromium.googlesource.com/chromium/blink/+log/master/Source/modules/webaudio"
-	},
-	{
-		"title" : "EmojiOne",
-		"location" : "browser/fonts/",
-		"library_ignored" : "Mozilla's Library"
-	},
-	{
-		"title" : "NSS",
-		"location" : "security/nss/",
-		"library_ignored" : "Mozilla's Library"
-	},
-	{
-		"title" : "nsprpub",
-		"location" : "nsprpub/",
-		"library_ignored" : "Mozilla's Library"
-	},
-	{
-		"title" : "libmar",
-		"location" : "modules/libmar/",
-		"library_ignored" : "Mozilla's Library"
-	},
-	{
-		"title" : "wrench",
-		"location" : "gfx/wrench/",
-		"library_ignored" : "Testing library"
-	},
-	{
-		"title" : "gmock",
-		"location" : "testing/gtest/gmock/",
-		"library_ignored" : "Testing library"
-	},
-	{
-		"title" : "gtest",
-		"location" : "testing/gtest/gtest/",
-		"library_ignored" : "Testing library"
-	},
-	{
-		"title" : "Talos Libraries",
-		"location" : "testing/talos/talos/*",
-		"library_ignored" : "Talos Performance Testing libraries"
-	},
-	{
-		"title" : "Python Libraries",
-		"location" : "third_party/python/*",
-		"library_ignored" : "Python Libraries"
-	},
-	{
-		"title" : "libfuzzer",
-		"location" : "tools/fuzzing/libfuzzer/",
-		"library_ignored" : "Fuzzing Library"
-	},
-	{
-		"title" : "lz4",
-		"location" : "mfbt/lz4/",
-		"ignore" : "1.8.2",
-		"most_recent_bug" : 1460316,
+    {
+        "title" : "libmkv",
+        "location" : "media/libmkv/",
+        "library_ignored" : "Upstream abandonded"
+    },
+    {
+        "title" : "ycbcr",
+        "location" : "gfx/ycbcr/",
+        "library_ignored" : "Upstream abandonded"
+    },
+    {
+        "title" : "qcms",
+        "location" : "gfx/qcms/",
+        "library_ignored" : "Heavy-Forked from lcms in 2009"
+    },
+    {
+        "title" : "libtheora",
+        "location" : "media/libtheora/",
+        "library_ignored" : "Maintained by Mozilla employees"
+    },
+    {
+        "title" : "libnestegg",
+        "location" : "media/libnestegg/",
+        "library_ignored" : "Maintained by Mozilla employees"
+    },
+    {
+        "title" : "libpng",
+        "location" : "media/libpng/",
+        "library_ignored" : "Maintained by Mozilla employees"
+    },
+    {
+        "title" : "Blink Web Audio",
+        "location" : "dom/media/webaudio/blink/",
+        "library_ignored" : "Heavy fork of https://chromium.googlesource.com/chromium/blink/+log/master/Source/modules/webaudio"
+    },
+    {
+        "title" : "EmojiOne",
+        "location" : "browser/fonts/",
+        "library_ignored" : "Mozilla's Library"
+    },
+    {
+        "title" : "NSS",
+        "location" : "security/nss/",
+        "library_ignored" : "Mozilla's Library"
+    },
+    {
+        "title" : "nsprpub",
+        "location" : "nsprpub/",
+        "library_ignored" : "Mozilla's Library"
+    },
+    {
+        "title" : "libmar",
+        "location" : "modules/libmar/",
+        "library_ignored" : "Mozilla's Library"
+    },
+    {
+        "title" : "wrench",
+        "location" : "gfx/wrench/",
+        "library_ignored" : "Testing library"
+    },
+    {
+        "title" : "gmock",
+        "location" : "testing/gtest/gmock/",
+        "library_ignored" : "Testing library"
+    },
+    {
+        "title" : "gtest",
+        "location" : "testing/gtest/gtest/",
+        "library_ignored" : "Testing library"
+    },
+    {
+        "title" : "Talos Libraries",
+        "location" : "testing/talos/talos/*",
+        "library_ignored" : "Talos Performance Testing libraries"
+    },
+    {
+        "title" : "Python Libraries",
+        "location" : "third_party/python/*",
+        "library_ignored" : "Python Libraries"
+    },
+    {
+        "title" : "libfuzzer",
+        "location" : "tools/fuzzing/libfuzzer/",
+        "library_ignored" : "Fuzzing Library"
+    },
+    {
+        "title" : "lz4",
+        "location" : "mfbt/lz4/",
+        "ignore" : "1.8.2",
+        "most_recent_bug" : 1460316,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/lz4/lz4",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/lz4/lz4",
 
-		"current_version_fetch_type" : "dotall_html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/lz4.h",
-		"current_version_re" : "Version\\s*-*\\*+/\\s(.+?)/\\*\\*",
-		
-		"current_version_post_alter" : "lambda x : '.'.join(re.findall(' ([0-9]+) ', x))"
-	},      
-	{
-		"title" : "libogg",
-		"location" : "media/libogg/",
-		"ignore" : "1.3.3",
+        "current_version_fetch_type" : "dotall_html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/lz4.h",
+        "current_version_re" : "Version\\s*-*\\*+/\\s(.+?)/\\*\\*",
+        
+        "current_version_post_alter" : "lambda x : '.'.join(re.findall(' ([0-9]+) ', x))"
+    },      
+    {
+        "title" : "libogg",
+        "location" : "media/libogg/",
+        "ignore" : "1.3.3",
 
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://xiph.org/downloads/",
-		"latest_version_re" : "<td>libogg</td>\\s<td>([0-9.]+)</td>",
-		# SAN/SNI problems
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://xiph.org/downloads/",
+        "latest_version_re" : "<td>libogg</td>\\s<td>([0-9.]+)</td>",
+        # SAN/SNI problems
+        "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
-		"current_version_re" : "Version: ([0-9.]+)"
-	},
-	{
-		"title" : "icu",
-		"location" : "intl/icu/",
-		"filing_info" : " JavaScript:: Internationalization API",
-		"ignore" : "62.1",
-		"most_recent_bug" : 1466471,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libogg/README_MOZILLA",
+        "current_version_re" : "Version: ([0-9.]+)"
+    },
+    {
+        "title" : "icu",
+        "location" : "intl/icu/",
+        "filing_info" : " JavaScript:: Internationalization API",
+        "ignore" : "62.1",
+        "most_recent_bug" : 1466471,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "http://site.icu-project.org/download/",
-		"latest_version_re" : "<p><b><i>ICU ([0-9. A-Z]+) \\(?[A-Z a-z]*\\)?\\s*is now available.</i></b>",
-		"latest_version_post_alter" : "lambda x : x.replace(' RC', '-rc')",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "http://site.icu-project.org/download/",
+        "latest_version_re" : "<p><b><i>ICU ([0-9. A-Z]+) \\(?[A-Z a-z]*\\)?\\s*is now available.</i></b>",
+        "latest_version_post_alter" : "lambda x : x.replace(' RC', '-rc')",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/icu/SVN-INFO",
-		"current_version_re" : "Relative URL: \\^/tags/release-([0-9-]+)/icu4c",
-		"current_version_post_alter" : "lambda x : x.replace('-', '.')"
-	},
-	{
-		"title" : "sctp",
-		"location" : "netwerk/sctp/",
-		"filing_info" : "When Mozilla finally updates SCTP, address this library",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/icu/source/configure",
+        "current_version_re" : "Generated by GNU Autoconf \\S+ for ICU ([\\d.]+)\\."
+    },
+    {
+        "title" : "sctp",
+        "location" : "netwerk/sctp/",
+        "filing_info" : "When Mozilla finally updates SCTP, address this library",
 
-		"latest_version_fetch_type" : "hardcoded",
-		"latest_version_fetch_location" : "Nov 28 15:20:51 EST 2017",
+        "latest_version_fetch_type" : "hardcoded",
+        "latest_version_fetch_location" : "Nov 28 15:20:51 EST 2017",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/sctp/sctp_update.log",
-		"current_version_re" : "sctp updated to version [^\\s]+ from [^\\s]+ on .+? (.+)$",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/sctp/sctp_update.log",
+        "current_version_re" : "sctp updated to version [^\\s]+ from [^\\s]+ on .+? (.+)$",
 
-		"compare_type" : "equality"
-	},
-	{
-		"title" : "xz-embedded",
-		"location" : "modules/xz-embedded/",
-		"ignore" : "79b68de5657beecfad575578a7181cf6fca869cb",
-		"most_recent_bug" : 1354571,
+        "compare_type" : "equality"
+    },
+    {
+        "title" : "xz-embedded",
+        "location" : "modules/xz-embedded/",
+        "ignore" : "79b68de5657beecfad575578a7181cf6fca869cb",
+        "most_recent_bug" : 1354571,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "http://git.tukaani.org/?p=xz-embedded.git;a=log;h=refs/heads/master",
-		"latest_version_re" : "<a class=\"title\" href=\"/\\?p=xz-embedded\\.git;a=commit;h=([a-f0-9A-F]{40})",
-		# SAN/SNI problems
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "http://git.tukaani.org/?p=xz-embedded.git;a=log;h=refs/heads/master",
+        "latest_version_re" : "<a class=\"title\" href=\"/\\?p=xz-embedded\\.git;a=commit;h=([a-f0-9A-F]{40})",
+        # SAN/SNI problems
+        "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/xz-embedded/README.mozilla",
-		"current_version_re" : "Current version: \\[([a-f0-9A-F]{40})\\]",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/xz-embedded/README.mozilla",
+        "current_version_re" : "Current version: \\[([a-f0-9A-F]{40})\\]",
 
-		"compare_type" : "equality"
-	},
-	# See https://github.com/mozilla-services/third-party-library-alert/issues/6
-	# We're on top of cubeb though so this isn't concerning
-	#{
-	#	"title" : "cubeb",
-	#	"location" : "media/libcubeb/",
-	#	# "ignore" : "2017-02-17 01:34:22",
-	#	# "ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
+        "compare_type" : "equality"
+    },
+    # See https://github.com/mozilla-services/third-party-library-alert/issues/6
+    # We're on top of cubeb though so this isn't concerning
+    #{
+    #   "title" : "cubeb",
+    #   "location" : "media/libcubeb/",
+    #   # "ignore" : "2017-02-17 01:34:22",
+    #   # "ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
 #
-	#	"latest_version_fetch_type" : "html_re",
-	#	"latest_version_fetch_location" : "https://github.com/kinetiknz/cubeb/commits/master",
-	#	"latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
-	#	"latest_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
+    #   "latest_version_fetch_type" : "html_re",
+    #   "latest_version_fetch_location" : "https://github.com/kinetiknz/cubeb/commits/master",
+    #   "latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
+    #   "latest_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
 #
-	#	"current_version_fetch_type" : "html_re",
-	#	"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libcubeb/README_MOZILLA",
-	#	"current_version_re" : "The git commit ID used was [a-fA-F0-9]{40} \\(([-0-9 :]+) ",
-	#	"current_version_date_format_string" : "%Y-%m-%d %H:%M:%S",
-	#	
-	#	"compare_type" : "date",
-	#	"compare_date_lag" : 30
-	#},
-	{
-		"title" : "woff2",
-		"location" : "modules/woff2/",
-		"ignore" : "a0d0ed7da27b708c0a4e96ad7a998bddc933c06e",
+    #   "current_version_fetch_type" : "html_re",
+    #   "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libcubeb/README_MOZILLA",
+    #   "current_version_re" : "The git commit ID used was [a-fA-F0-9]{40} \\(([-0-9 :]+) ",
+    #   "current_version_date_format_string" : "%Y-%m-%d %H:%M:%S",
+    #   
+    #   "compare_type" : "date",
+    #   "compare_date_lag" : 30
+    #},
+    {
+        "title" : "woff2",
+        "location" : "modules/woff2/",
+        "ignore" : "a0d0ed7da27b708c0a4e96ad7a998bddc933c06e",
 
-		"latest_version_fetch_type" : "github_hash",
-		"latest_version_fetch_location" : "https://github.com/google/woff2",
+        "latest_version_fetch_type" : "github_hash",
+        "latest_version_fetch_location" : "https://github.com/google/woff2",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/woff2/README.mozilla",
-		"current_version_re" : "Current version: \\[commit\\s*([a-fA-F0-9]{40})\\]\\.",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/woff2/README.mozilla",
+        "current_version_re" : "Current version: \\[commit\\s*([a-fA-F0-9]{40})\\]\\.",
 
-		"compare_type" : "equality"
-	},
-	#{
-		#"title" : "libyuv",
-		#"location" : "media/libyuv/",
-		#"filing_info" : "Blocks: 1284800 Core:Graphics",
-		#"ignore" : "a9626b9daf62a9b260737e9c2de821ad087b19a1",
-		#"most_recent_bug" : 1346291,
+        "compare_type" : "equality"
+    },
+    #{
+        #"title" : "libyuv",
+        #"location" : "media/libyuv/",
+        #"filing_info" : "Blocks: 1284800 Core:Graphics",
+        #"ignore" : "a9626b9daf62a9b260737e9c2de821ad087b19a1",
+        #"most_recent_bug" : 1346291,
 
-		#"latest_version_fetch_type" : "html_re_base64",
-		#"latest_version_fetch_location" : "https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT",
-		#"latest_version_re" : "'/libyuv/libyuv\\.git' \\+ '@' \\+ '([a-fA-F0-9]{40})',",
+        #"latest_version_fetch_type" : "html_re_base64",
+        #"latest_version_fetch_location" : "https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT",
+        #"latest_version_re" : "'/libyuv/libyuv\\.git' \\+ '@' \\+ '([a-fA-F0-9]{40})',",
 
-		#"current_version_fetch_type" : "html_re",
-		#"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libyuv/README_MOZILLA",
-		#"current_version_re" : "The git commit ID last used to import was ([a-fA-F0-9]{40})",
-		#
-		#"print_latest_version_fetch_location_munge" : "lambda x : x.replace('?format=TEXT', '')",
-		#"print_additional_library_info" : "(Technically, this 'latest commit' is not a release, but Chromium has rolled their dependency of libyuv.)",
+        #"current_version_fetch_type" : "html_re",
+        #"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libyuv/README_MOZILLA",
+        #"current_version_re" : "The git commit ID last used to import was ([a-fA-F0-9]{40})",
+        #
+        #"print_latest_version_fetch_location_munge" : "lambda x : x.replace('?format=TEXT', '')",
+        #"print_additional_library_info" : "(Technically, this 'latest commit' is not a release, but Chromium has rolled their dependency of libyuv.)",
 
-		#"compare_type" : "equality"
-	#},
-	# {
-		# "title" : "pdfium",
-		# "location" : "modules/pdfium/",
-		# "filing_info" : "",
-		# "ignore" : "6058efdbdc186e120e7e2121c290ac4d820ffbf8",
-		# "most_recent_bug" : 1407027,
+        #"compare_type" : "equality"
+    #},
+    # {
+        # "title" : "pdfium",
+        # "location" : "modules/pdfium/",
+        # "filing_info" : "",
+        # "ignore" : "6058efdbdc186e120e7e2121c290ac4d820ffbf8",
+        # "most_recent_bug" : 1407027,
 
-		# "latest_version_fetch_type" : "html_re_base64",
-		# "latest_version_fetch_location" : "https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT",
-		# "latest_version_re" : "'pdfium_revision': '([a-fA-F0-9]{40})',",
+        # "latest_version_fetch_type" : "html_re_base64",
+        # "latest_version_fetch_location" : "https://chromium.googlesource.com/chromium/src/+/master/DEPS?format=TEXT",
+        # "latest_version_re" : "'pdfium_revision': '([a-fA-F0-9]{40})',",
 
-		# "current_version_fetch_type" : "html_re",
-		# "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/pdfium/README_MOZILLA",
-		# "current_version_re" : "The git commit ID last used to import was ([a-fA-F0-9]{40})",
+        # "current_version_fetch_type" : "html_re",
+        # "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/pdfium/README_MOZILLA",
+        # "current_version_re" : "The git commit ID last used to import was ([a-fA-F0-9]{40})",
 
-		# "print_latest_version_fetch_location_munge" : "lambda x : x.replace('?format=TEXT', '')",
-		# "print_additional_library_info" : "(Technically, this 'latest commit' is not a release, but Chromium has rolled their dependency of pdfium.)",
+        # "print_latest_version_fetch_location_munge" : "lambda x : x.replace('?format=TEXT', '')",
+        # "print_additional_library_info" : "(Technically, this 'latest commit' is not a release, but Chromium has rolled their dependency of pdfium.)",
 
-		# "compare_type" : "equality"
-	#},
-	{
-		"title" : "Hyphen",
-		"location" : "intl/hyphenation/hyphen/",
+        # "compare_type" : "equality"
+    #},
+    {
+        "title" : "Hyphen",
+        "location" : "intl/hyphenation/hyphen/",
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://sourceforge.net/projects/hunspell/rss?path=/Hyphen",
-		"latest_version_re" : "<title><!\\[CDATA\\[/Hyphen/[0-9.]+/hyphen-([0-9.]+).tar.gz",
-		#SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://sourceforge.net/projects/hunspell/rss?path=/Hyphen",
+        "latest_version_re" : "<title><!\\[CDATA\\[/Hyphen/[0-9.]+/hyphen-([0-9.]+).tar.gz",
+        #SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
+        "latest_version_fetch_ssl_verify" : false,
 
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/hyphenation/hyphen/NEWS",
-		"current_version_re" : "[0-9-]+ Hyphen ([0-9.]+):"
-	},
-	{
-		"title" : "brotli",
-		"location" : "modules/brotli/",
-		"filing_info" : "(When brotli upgrades, see if the current dev branch is master or v0.5. Fix the mozilla update.sh script to output the version (like in 1341895).)",
-		"ignore" : "1.0.5",
-		"most_recent_bug" : 1474122,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/intl/hyphenation/hyphen/NEWS",
+        "current_version_re" : "[0-9-]+ Hyphen ([0-9.]+):"
+    },
+    {
+        "title" : "brotli",
+        "location" : "modules/brotli/",
+        "filing_info" : "(When brotli upgrades, see if the current dev branch is master or v0.5. Fix the mozilla update.sh script to output the version (like in 1341895).)",
+        "ignore" : "1.0.5",
+        "most_recent_bug" : 1474122,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/google/brotli",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/google/brotli",
 
-		"current_version_fetch_type" : "hardcoded",
-		"current_version_fetch_location" : "1.0.2"
-	},
-	{
-		"title" : "SRTP",
-		"location" : "netwerk/srtp/src/",
-		"ignore" : "1.6.0", 
-		"most_recent_bug" : 1230759,
+        "current_version_fetch_type" : "hardcoded",
+        "current_version_fetch_location" : "1.0.2"
+    },
+    {
+        "title" : "SRTP",
+        "location" : "netwerk/srtp/src/",
+        "ignore" : "1.6.0", 
+        "most_recent_bug" : 1230759,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/cisco/libsrtp",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/cisco/libsrtp",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/srtp/src/VERSION",
-		"current_version_re" : "([0-9\\.]+)"
-	},
-	{
-		"title" : "openvr",
-		"location" : "gfx/vr/openvr/",
-		"ignore" : "1.0.15",
-		"most_recent_bug" : 1423731,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/srtp/src/VERSION",
+        "current_version_re" : "([0-9\\.]+)"
+    },
+    {
+        "title" : "openvr",
+        "location" : "gfx/vr/service/openvr/",
+        "ignore" : "1.0.15",
+        "most_recent_bug" : 1423731,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/ValveSoftware/openvr",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/ValveSoftware/openvr",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/vr/openvr/README.mozilla",
-		"current_version_re" : "version ([0-9\\.]+)"
-	},
-	{
-		"title" : "OTS",
-		"location" : "gfx/ots/",
-		"filing_info" : "Graphics:Text Blocks-Prior-bug:1406833 CC:RyanVM CC:fredw",
-		"ignore" : "7.1.7", 
-		"most_recent_bug" : 1465807,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/vr/service/openvr/README.mozilla",
+        "current_version_re" : "version ([0-9\\.]+)"
+    },
+    {
+        "title" : "OTS",
+        "location" : "gfx/ots/",
+        "filing_info" : "Graphics:Text Blocks-Prior-bug:1406833 CC:RyanVM CC:fredw",
+        "ignore" : "7.1.7", 
+        "most_recent_bug" : 1465807,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/khaledhosny/ots/",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/khaledhosny/ots/",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/ots/README.mozilla",
-		"current_version_re" : "Current revision: [0-9a-fA-F]+ \\(([0-9\\.]+)\\)"
-	},
-	{
-		"title" : "libvpx",
-		"location" : "media/libvpx/",
-		"ignore" : "1.7.0",
-		"most_recent_bug" : 1433158,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/ots/README.mozilla",
+        "current_version_re" : "Current revision: [0-9a-fA-F]+ \\(([0-9\\.]+)\\)"
+    },
+    {
+        "title" : "libvpx",
+        "location" : "media/libvpx/",
+        "ignore" : "1.7.0",
+        "most_recent_bug" : 1433158,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://chromium.googlesource.com/webm/libvpx/+refs",
-		"latest_version_re" : "Tags</h3><ul class=\"RefList-items\"><li class=\"RefList-item\"><a href=\"/webm/libvpx/\\+/v([0-9.]+)\">",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://chromium.googlesource.com/webm/libvpx/+refs",
+        "latest_version_re" : "Tags</h3><ul class=\"RefList-items\"><li class=\"RefList-item\"><a href=\"/webm/libvpx/\\+/v([0-9.]+)\">",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libvpx/README_MOZILLA",
-		"current_version_re" : "The git commit ID used was v([0-9.]+)"
-	},
-	{
-		"title" : "kissfft",
-		"location" : "media/kiss_fft/",
-		"filing_info" : "Core:Audio/Video",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libvpx/libvpx/CHANGELOG",
+        "current_version_re" : "\\d\\d\\d\\d-\\d\\d-\\d\\d v([0-9.]+) "
+    },
+    {
+        "title" : "kissfft",
+        "location" : "media/kiss_fft/",
+        "filing_info" : "Core:Audio/Video",
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://sourceforge.net/p/kissfft/code/ci/default/tree/",
-		"latest_version_re" : "Tree <a href=\"/p/kissfft/code/ci/([0-9a-f]{12})",
-		# SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://sourceforge.net/p/kissfft/code/ci/default/tree/",
+        "latest_version_re" : "Tree <a href=\"/p/kissfft/code/ci/([0-9a-f]{12})",
+        # SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
+        "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/kiss_fft/README_MOZILLA",
-		"current_version_re" : "([0-9a-f]{12})",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/kiss_fft/README_MOZILLA",
+        "current_version_re" : "([0-9a-f]{12})",
 
-		"compare_type" : "equality"
-	},
-	{
-		"title" : "freetype2",
-		"filing_info" : "CC:ryanvm",
-		"location" : "modules/freetype2/",
-		"ignore" : "2.9.1",
-		"most_recent_bug" : 1458905,
+        "compare_type" : "equality"
+    },
+    {
+        "title" : "freetype2",
+        "filing_info" : "CC:ryanvm",
+        "location" : "modules/freetype2/",
+        "ignore" : "2.9.1",
+        "most_recent_bug" : 1458905,
 
-		"latest_version_fetch_type" : "find_in_directory",
-		"latest_version_fetch_location" : "http://download.savannah.gnu.org/releases/freetype/",
-		"latest_version_file_prefix_re" : "freetype-",
-		"latest_version_file_suffix_re" : "\\.tar\\.bz2",
+        "latest_version_fetch_type" : "find_in_directory",
+        "latest_version_fetch_location" : "http://download.savannah.gnu.org/releases/freetype/",
+        "latest_version_file_prefix_re" : "freetype-",
+        "latest_version_file_suffix_re" : "\\.tar\\.bz2",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/freetype2/README",
-		"current_version_re" : "FreeType ([0-9\\.]+)"
-	},
-	{
-		"title" : "libevent",
-		"filing_info" : "CC:ryanvm",
-		"location" : "modules/freetype2/",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/freetype2/README",
+        "current_version_re" : "FreeType ([0-9\\.]+)"
+    },
+    {
+        "title" : "libevent",
+        "filing_info" : "CC:ryanvm",
+        "location" : "modules/freetype2/",
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://raw.githubusercontent.com/libevent/libevent/patches-2.1/configure.ac",
-		"latest_version_re" : "AC_INIT\\(libevent,([0-9.]+)",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://raw.githubusercontent.com/libevent/libevent/patches-2.1/configure.ac",
+        "latest_version_re" : "AC_INIT\\(libevent,([0-9.]+)",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/ipc/chromium/src/third_party/libevent/configure.ac",
-		"current_version_re" : "AC_INIT\\(libevent,([0-9.]+)"
-	},
-	{
-		"title" : "libffi",
-		"filing_info" : "CC:ryanvm Core:js-ctypes",
-		"location" : "js/src/ctypes/libffi/",
-		"ignore" : "3.2.1", 
-		"most_recent_bug" : 1339534,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/ipc/chromium/src/third_party/libevent/configure.ac",
+        "current_version_re" : "AC_INIT\\(libevent,([0-9.]+)"
+    },
+    {
+        "title" : "libffi",
+        "filing_info" : "CC:ryanvm Core:js-ctypes",
+        "location" : "js/src/ctypes/libffi/",
+        "ignore" : "3.2.1", 
+        "most_recent_bug" : 1339534,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://sourceware.org/libffi/",
-		"latest_version_re" : "<b>libffi-([0-9.]+)</b> was released",
-		# SAN/SNI problems
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://sourceware.org/libffi/",
+        "latest_version_re" : "<b>libffi-([0-9.]+)</b> was released",
+        # SAN/SNI problems
+        "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
-		"current_version_re" : "libffi-([0-9\\.]+) was"
-	},
-	{
-		"title" : "sqlite",
-		"filing_info" : "Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug",
-		"location" : "db/sqlite3/src/",
-		"ignore" : "3.23.0",
-		"most_recent_bug" : 1450988,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/js/src/ctypes/libffi/README",
+        "current_version_re" : "libffi-([0-9\\.]+) was"
+    },
+    {
+        "title" : "sqlite",
+        "filing_info" : "Toolkit:Storage CC:ryanvm Blocks:1339321 Blocks:previous-update-bug",
+        "location" : "db/sqlite3/src/",
+        "ignore" : "3.23.0",
+        "most_recent_bug" : 1450988,
 
-		"latest_version_fetch_type" : "find_in_directory",
-		"latest_version_fetch_location" : "https://www.sqlite.org/chronology.html",
-		"latest_version_file_prefix_re" : "releaselog/[0-9_]+\\.html\">",
-		"latest_version_file_suffix_re" : "</a>",
-		# certificate verify failed
-		# "latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "find_in_directory",
+        "latest_version_fetch_location" : "https://www.sqlite.org/chronology.html",
+        "latest_version_file_prefix_re" : "releaselog/[0-9_]+\\.html\">",
+        "latest_version_file_suffix_re" : "</a>",
+        # certificate verify failed
+        # "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/old-configure.in",
-		"current_version_re" : "SQLITE_VERSION=([0-9\\.]+)"
-	},
-	{
-		"title" : "pixman",
-		"location" : "gfx/cairo/",
-		"ignore" : "0.34.0",
-		"most_recent_bug" : 870258,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/old-configure.in",
+        "current_version_re" : "SQLITE_VERSION=([0-9\\.]+)"
+    },
+    {
+        "title" : "pixman",
+        "location" : "gfx/cairo/",
+        "ignore" : "0.34.0",
+        "most_recent_bug" : 870258,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://www.cairographics.org/releases/",
-		# SAN/SNI problems
-		"latest_version_fetch_ssl_verify" : false,
-		"latest_version_re" : "LATEST-pixman-([0-9.]+)",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://www.cairographics.org/releases/",
+        # SAN/SNI problems
+        "latest_version_fetch_ssl_verify" : false,
+        "latest_version_re" : "LATEST-pixman-([0-9.]+)",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/cairo/README",
-		"current_version_re" : "pixman \\(([0-9\\.]+)\\)"
-	},
-	{
-		"title" : "libav",
-		"location" : "media/libav/",
-		"filing_info" : "Core:Audio/Video",
-		"ignore" : "12.3",
-		"most_recent_bug" : 1339521,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/cairo/README",
+        "current_version_re" : "pixman \\(([0-9\\.]+)\\)"
+    },
+    {
+        "title" : "libav",
+        "location" : "media/libav/",
+        "filing_info" : "Core:Audio/Video",
+        "ignore" : "12.3",
+        "most_recent_bug" : 1339521,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://libav.org/download/",
-		"latest_version_re" : "<b>([0-9.]+)</b> was released on <i>",
-		# Site presents multiple chains and it confuses the old version of requests AFAICT
-		"latest_version_fetch_ssl_verify" : false,
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://libav.org/download/",
+        "latest_version_re" : "<b>([0-9.]+)</b> was released on <i>",
+        # Site presents multiple chains and it confuses the old version of requests AFAICT
+        "latest_version_fetch_ssl_verify" : false,
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libav/VERSION",
-		"current_version_re" : "([0-9\\.]+)"
-	},
-	{
-		# To ignore the first time, set ignore_until and ignore_date_format_string; to ignore the second time, comment out those and compare_type
-		"title" : "double-conversion",
-		"location" : "mfbt/double-conversion/double-conversion/",
-		"filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
-		"ignore" : "2018-05-22",
-		"most_recent_bug" : 1465808,
-		#"ignore_date_format_string" : "%Y-%m-%d",
-		#"ignore_until" : "2017-09-17",
-		
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://github.com/google/double-conversion/commits/master",
-		"latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)T",
-		"latest_version_date_format_string" : "%Y-%m-%dT",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libav/VERSION",
+        "current_version_re" : "([0-9\\.]+)"
+    },
+    {
+        # To ignore the first time, set ignore_until and ignore_date_format_string; to ignore the second time, comment out those and compare_type
+        "title" : "double-conversion",
+        "location" : "mfbt/double-conversion/double-conversion/",
+        "filing_info" : "Email jwalden@mozilla.com then ignore for 7 days; Then open bug in MFBT",
+        "ignore" : "2018-05-22",
+        "most_recent_bug" : 1465808,
+        #"ignore_date_format_string" : "%Y-%m-%d",
+        #"ignore_until" : "2017-09-17",
+        
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://github.com/google/double-conversion/commits/master",
+        "latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)T",
+        "latest_version_date_format_string" : "%Y-%m-%dT",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/double-conversion/GIT-INFO",
-		"current_version_re" : "Date:\\s+[^\\s]+ ([0-9a-zA-Z: ]+) \\+*[0-9]*",
-		"current_version_date_format_string" : "%b %d %H:%M:%S %Y"
-		
-		#"compare_type" : "date",
-		#"compare_date_lag" : 0
-	},
-	{
-		"title" : "zlib",
-		"location" : "modules/zlib/",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/mfbt/double-conversion/GIT-INFO",
+        "current_version_re" : "Date:\\s+[^\\s]+ ([0-9a-zA-Z: ]+) \\+*[0-9]*",
+        "current_version_date_format_string" : "%b %d %H:%M:%S %Y"
+        
+        #"compare_type" : "date",
+        #"compare_date_lag" : 0
+    },
+    {
+        "title" : "zlib",
+        "location" : "modules/zlib/",
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "http://zlib.net/ChangeLog.txt",
-		"latest_version_re" : "Changes in ([0-9.]+)",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "http://zlib.net/ChangeLog.txt",
+        "latest_version_re" : "Changes in ([0-9.]+)",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/zlib/src/ChangeLog",
-		"current_version_re" : "Changes in ([0-9.]+)"
-	},
-	{
-		"title" : "skia",
-		"filing_info" : "Core:Graphics blocks:1210886",
-		"location" : "gfx/skia/",
-		"ignore" : "68",
-		"most_recent_bug" : 1368720,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/zlib/src/ChangeLog",
+        "current_version_re" : "Changes in ([0-9.]+)"
+    },
+    {
+        "title" : "skia",
+        "filing_info" : "Core:Graphics blocks:1210886",
+        "location" : "gfx/skia/",
+        "ignore" : "68",
+        "most_recent_bug" : 1368720,
 
-		"latest_version_fetch_type" : "html_re",
-		"latest_version_fetch_location" : "https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h",
-		"latest_version_re" : "<span class=\"pln\"> SK_MILESTONE <\/span><span class=\"lit\">([0-9]+)<\/span>",
-		"latest_version_post_alter" : "lambda x : str(int(x)-1)",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://skia.googlesource.com/skia/+/master/include/core/SkMilestone.h",
+        "latest_version_re" : "<span class=\"pln\"> SK_MILESTONE <\/span><span class=\"lit\">([0-9]+)<\/span>",
+        "latest_version_post_alter" : "lambda x : str(int(x)-1)",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/skia/skia/include/core/SkMilestone.h",
-		"current_version_re" : "SK_MILESTONE ([0-9]+)"
-	},
-	{
-		"title" : "Harfbuzz",
-		"location" : "gfx/harfbuzz/",
-		"filing_info" : "Core:Graphics:Text CC:ryanvm",
-		"ignore" : "1.8.4",
-		"most_recent_bug" : 1476334,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/skia/skia/include/core/SkMilestone.h",
+        "current_version_re" : "SK_MILESTONE ([0-9]+)"
+    },
+    {
+        "title" : "Harfbuzz",
+        "location" : "gfx/harfbuzz/",
+        "filing_info" : "Core:Graphics:Text CC:ryanvm",
+        "ignore" : "1.8.4",
+        "most_recent_bug" : 1476334,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/harfbuzz/harfbuzz/",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/harfbuzz/harfbuzz/",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
-		"current_version_re" : "Current version:\\s*([0-9\\.]+)"
-	},
-	{
-		"title" : "Graphite2",
-		"location" : "gfx/graphite2/",
-		"filing_info" : "CC:ryanvm",
-		"ignore" : "1.3.11",
-		"most_recent_bug" : 1363063,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/harfbuzz/README-mozilla",
+        "current_version_re" : "Current version:\\s*([0-9\\.]+)"
+    },
+    {
+        "title" : "Graphite2",
+        "location" : "gfx/graphite2/",
+        "filing_info" : "CC:ryanvm",
+        "ignore" : "1.3.11",
+        "most_recent_bug" : 1363063,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/silnrsi/graphite/",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/silnrsi/graphite/",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/graphite2/README.mozilla",
-		"current_version_re" : "This directory contains the Graphite2 library release ([0-9\\.]+) from"
-	},
-	{
-		"title" : "Hunspell",
-		"location" : "extensions/spellcheck/hunspell/src/",
-		"filing_info" : "Core::Spelling Checker CC:ryanvm",
-		"ignore" : "1.6.2",
-		"most_recent_bug" : 1397867,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/gfx/graphite2/README.mozilla",
+        "current_version_re" : "This directory contains the Graphite2 library release ([0-9\\.]+) from"
+    },
+    {
+        "title" : "Hunspell",
+        "location" : "extensions/spellcheck/hunspell/src/",
+        "filing_info" : "Core::Spelling Checker CC:ryanvm",
+        "ignore" : "1.6.2",
+        "most_recent_bug" : 1397867,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/hunspell/hunspell/",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/hunspell/hunspell/",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
-		"current_version_re" : "Hunspell Version:\\s*v?([0-9\\.]+)"
-	},
-	{
-		"title" : "Codemirror",
-		"filing_info" : "Firefox: Developer Tools: Source Editor",
-		"location" : "devtools/client/sourceeditor/codemirror/",
-		"ignore" : "5.39.0",
-		"most_recent_bug" : 1475659,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/extensions/spellcheck/hunspell/src/README.mozilla",
+        "current_version_re" : "Hunspell Version:\\s*v?([0-9\\.]+)"
+    },
+    {
+        "title" : "Codemirror",
+        "filing_info" : "Firefox: Developer Tools: Source Editor",
+        "location" : "devtools/client/sourceeditor/codemirror/",
+        "ignore" : "5.39.0",
+        "most_recent_bug" : 1475659,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/codemirror/CodeMirror/",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/codemirror/CodeMirror/",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/README",
-		"current_version_re" : "Currently used version is ([0-9\\.]+)\\. To upgrade"
-	},
-	#{
-	#	"title" : "pdfjs",
-	#	"location" : "browser/extensions/pdfjs/",
-	#	"allows_ahead" : true,
-	#	"filing_info" : "CC:ryanvm",
-	#	"ignore" : "1.8.170",
-	#	"most_recent_bug" : 1354081,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/README",
+        "current_version_re" : "Currently used version is ([0-9\\.]+)\\. To upgrade"
+    },
+    #{
+    #   "title" : "pdfjs",
+    #   "location" : "browser/extensions/pdfjs/",
+    #   "allows_ahead" : true,
+    #   "filing_info" : "CC:ryanvm",
+    #   "ignore" : "1.8.170",
+    #   "most_recent_bug" : 1354081,
 
-	#	"latest_version_fetch_type" : "github_rss",
-	#	"latest_version_fetch_location" : "https://github.com/mozilla/pdf.js",
+    #   "latest_version_fetch_type" : "github_rss",
+    #   "latest_version_fetch_location" : "https://github.com/mozilla/pdf.js",
 
-	#	"current_version_fetch_type" : "html_re",
-	#	"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/extensions/pdfjs/README.mozilla",
-	#	"current_version_re" : "Current extension version is: ([0-9\\.]+)"
-	#},
-	{
-		"title" : "ternjs",
-		"location" : "devtools/client/sourceeditor/tern/",
-		"ignore" : "0.21.0",
-		"most_recent_bug" : 1338660,
+    #   "current_version_fetch_type" : "html_re",
+    #   "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/extensions/pdfjs/README.mozilla",
+    #   "current_version_re" : "Current extension version is: ([0-9\\.]+)"
+    #},
+    {
+        "title" : "ternjs",
+        "location" : "devtools/client/sourceeditor/tern/",
+        "ignore" : "0.21.0",
+        "most_recent_bug" : 1338660,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/ternjs/tern",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/ternjs/tern",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/tern/README",
-		"current_version_re" : "Currently used version is ([0-9\\.]+)\\."
-	},
-	{
-		"title" : "libjpeg-turbo",
-		"location" : "media/libjpeg/",
-		"ignore" : "1.5.90",
-		"filing_info" : "Core::ImageLib CC:ryanvm",
-		"most_recent_bug" : 1425835,
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/devtools/client/sourceeditor/tern/README",
+        "current_version_re" : "Currently used version is ([0-9\\.]+)\\."
+    },
+    {
+        "title" : "libjpeg-turbo",
+        "location" : "media/libjpeg/",
+        "ignore" : "1.5.90",
+        "filing_info" : "Core::ImageLib CC:ryanvm",
+        "most_recent_bug" : 1425835,
 
-		"latest_version_fetch_type" : "github_rss",
-		"latest_version_fetch_location" : "https://github.com/libjpeg-turbo/libjpeg-turbo",
+        "latest_version_fetch_type" : "github_rss",
+        "latest_version_fetch_location" : "https://github.com/libjpeg-turbo/libjpeg-turbo",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libjpeg/MOZCHANGES",
-		"current_version_re" : "Updated to v([0-9\\.]+) release."
-	},
-#	{
-#		"title" : "raven-js",
-#		"location" : "https://github.com/mozilla-services/screenshots/",
-#		"filing_info" : "https://github.com/mozilla-services/screenshots/issues",
-#		"ignore" : "3.25.1",
-#		"most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/3651",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/media/libjpeg/MOZCHANGES",
+        "current_version_re" : "Updated to v([0-9\\.]+) release."
+    },
+#   {
+#       "title" : "raven-js",
+#       "location" : "https://github.com/mozilla-services/screenshots/",
+#       "filing_info" : "https://github.com/mozilla-services/screenshots/issues",
+#       "ignore" : "3.25.1",
+#       "most_recent_bug" : "https://github.com/mozilla-services/screenshots/issues/3651",
 #
-#		"latest_version_fetch_type" : "github_rss",
-#		"latest_version_fetch_location" : "https://github.com/getsentry/raven-js",
+#       "latest_version_fetch_type" : "github_rss",
+#       "latest_version_fetch_location" : "https://github.com/getsentry/raven-js",
 #
-#		"current_version_fetch_type" : "html_re",
-#		"current_version_fetch_location" : "https://raw.githubusercontent.com/mozilla-services/screenshots/master/package.json",
-#		"current_version_re" : "raven-js\": \"([0-9\\.]+)\","
-#	},
-	{
-		"title" : "fdlibm",
-		"location" : "modules/fdlibm/",
-		"filing_info" : "1343924 Javascript Engine CC::bbouvier ni::arai",
-		"ignore" : "2018-07-17 07:42:14",
-		"ignore_date_format_string" : "%Y-%m-%d %H:%M:%S",
-		"most_recent_bug" : 1461344,
+#       "current_version_fetch_type" : "html_re",
+#       "current_version_fetch_location" : "https://raw.githubusercontent.com/mozilla-services/screenshots/master/package.json",
+#       "current_version_re" : "raven-js\": \"([0-9\\.]+)\","
+#   },
+    {
+        "title" : "fdlibm",
+        "location" : "modules/fdlibm/",
+        "filing_info" : "1343924 Javascript Engine CC::bbouvier ni::arai",
+        "most_recent_bug" : 1461344,
 
-		"latest_version_fetch_type" : "list",
-		"latest_version_fetch_location_base" : "https://github.com/freebsd/freebsd/commits/master/lib/msun/src/",
-		"latest_version_fetch_location_list" : [
-			"math.h",
-			"math_private.h",
-			"e_acos.c",
-			"e_acosh.c",
-			"e_asin.c",
-			"s_asinh.c",
-			"s_atan.c",
-			"e_atanh.c",
-			"e_atan2.c",
-			"s_cbrt.c",
-			"s_ceil.c",
-			"s_ceilf.c",
-			"e_cosh.c",
-			"e_exp.c",
-			"s_expm1.c",
-			"s_floor.c",
-			"s_floorf.c",
-			"e_hypot.c",
-			"e_log.c",
-			"s_log1p.c",
-			"e_log10.c",
-			"k_log.h",
-			"e_log2.c",
-			"e_sinh.c",
-			"s_tanh.c",
-			"s_trunc.c",
-			"s_truncf.c",
-			"k_exp.c",
-			"s_copysign.c",
-			"s_fabs.c",
-			"s_scalbn.c",
-			"e_pow.c",
-			"e_sqrt.c",
-			"s_nearbyint.c",
-			"s_rint.c",
-			"s_rintf.c"
-			],
-		"latest_version_re" : "<relative-time datetime=\"([0-9-A-Z:a-z]+)\"",
-		"latest_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
-		"latest_version_addition_info_re" : "<a title=\"([^\"]+)\" class=\"message\" .+ href=\"/freebsd/freebsd/commit/[a-fA-F0-9]{40}#?d?i?f?f?-?[a-fA-F0-9]*\".+>",
+        "latest_version_fetch_type" : "html_re",
+        "latest_version_fetch_location" : "https://github.com/freebsd/freebsd/commits/master/lib/msun/src",
+        "latest_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
+        "latest_version_re" : "<relative-time datetime=\"([^\"]+)\"",
 
-		"current_version_fetch_type" : "html_re",
-		"current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
-		"current_version_re" : "Current version: \\[commit [0-9a-fA-F.]{40} \\((.+)\\)\\].",
-		"current_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
+        "current_version_fetch_type" : "html_re",
+        "current_version_fetch_location" : "https://hg.mozilla.org/mozilla-central/raw-file/tip/modules/fdlibm/README.mozilla",
+        "current_version_re" : "Current version: \\[commit [0-9a-fA-F]{40} \\(([^\\)]+)\\)",
+        "current_version_date_format_string" : "%Y-%m-%dT%H:%M:%SZ",
 
-		"compare_type" : "date",
-		"compare_date_lag" : 1
-	}
+        "compare_type" : "date",
+        "compare_date_lag" : 1
+    }
 ]
